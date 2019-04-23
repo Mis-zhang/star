@@ -1,0 +1,52 @@
+/* pages/register/register.wxss */
+.register-wrap {
+    overflow: hidden;
+    background-color: #fff;
+    border:1rpx solid #ddd;
+    padding: 10rpx 30rpx;
+    margin: 50rpx 30rpx;
+    border-radius: 20rpx;
+}
+.row-wrap {
+    overflow: hidden;
+    display: flex;
+    border-top: 1rpx solid #ddd;
+    line-height: 120rpx;
+    font-size: 30rpx;
+}
+.row-wrap:first-child {
+    border-top: none;
+}
+.row-left {
+    width: 130rpx;
+}
+.row-right {
+    flex: 1;
+}
+.row-right input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 120rpx;
+    height: 120rpx;
+}
+.row-Btn {
+    background: none!important;
+    padding: 0;
+    margin: 0;
+    border: none;
+    color: #f60;
+    width: 180rpx;
+    font-size: 30rpx;
+    text-align: center;
+    height: 120rpx;
+    line-height: 120rpx;
+   
+}
+.row-Btn::after{content: none;}
+.registerBtn {
+    margin: 0 30rpx;
+    background-color: #339900;
+    color: #fff;
+    font-size: 36rpx;
+}

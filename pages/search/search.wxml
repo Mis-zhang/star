@@ -1,0 +1,46 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <!--搜索-->
+     <!-- <view class="search">
+       <view class="inputsearch">
+          <view class="icon"></view>
+          <input class="input" placeholder="搜索商品" placeholder-style="color:#cecece" bindinput="clicksearch" value="{{searchname}}" focus="{{focus}}"/>
+       </view>
+       <button class="btn" bindtap="clickFn">{{click}}</button>
+     </view> -->
+   <!--分类-->
+     <view class='showTile' hidden='{{showTile}}'>抱歉，没有搜索到您要搜索的商品！</view>
+     <view class='searchList' hidden='{{showSearch}}'>
+         <view class='srarchTitle'>-- 共搜索到{{fullListSize}}条数据 --</view>
+
+         <view class="shop_lists">
+           <view class="lists_every" wx:for="{{searcshophList || searchfenList}}" wx:key="i" bindtap="shopdetailFn" data-index="{{index}}">
+              <view class="everyImg">
+                   <image src="{{item.defaultImg}}" mode="aspectFit" bindtap="orderDetailFn"></image>
+              </view>
+              <view class="shop_content">
+                  <view class='shopName'>【{{item.brand}}】{{item.onlineTitle}}</view>
+                  <text class="price">
+                      <text class="priceSmall" wx:if="{{item.price!=0}}">¥</text>{{item.price==0?'价格待定':item.price}} 
+                  </text>
+              </view>
+           </view>
+         </view>
+     </view>
+     <!--加载中-->
+    <view class="load" hidden="{{iscome}}">
+      <view class="loadstyle" hidden="{{dot}}">
+        <text class="loadding">加载中</text>
+        <view class="change">
+          <view class="{{dotclass[0]}}"></view>
+          <view class="{{dotclass[1]}}"></view>
+          <view class="{{dotclass[2]}}"></view>
+        </view>
+      </view>
+      <view class="loadover" hidden="{{!dot}}">
+        <view class="left"></view>
+        <text>无更多商品</text>
+        <view class="right"></view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="errorMsg" hidden="{{isError}}">{{errorMsg}}</view>
+    <view class="register-wrap">
+        <view class="row-wrap">
+            <text class="row-left">手机号：</text>
+            <view class="row-right"><input type="number" value="{{mob}}" maxlength="11" placeholder="请输入您的手机号" bindinput="mobFn" /></view>
+        </view>
+        <view class="row-wrap">
+            <text class="row-left">姓名：</text>
+            <view class="row-right"><input type="text" value="{{name}}" placeholder="请输入您的姓名" bindinput="nameFn" /></view>
+        </view>
+        <view class="row-wrap">
+            <text class="row-left">验证码：</text>
+            <view class="row-right"><input type="number" value="{{codeNum}}" placeholder="请输入您的验证码" bindinput="codeNumFn" /></view>
+            <button class="row-Btn" bindtap="getCodeFn" disabled="{{disabled}}">{{codeTip}}</button>
+        </view>
+    </view>
+    <button class="registerBtn" bindtap="registerFn">注 册</button>
+</view>

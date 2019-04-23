@@ -1,0 +1,8 @@
+button{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 20rpx;
+  background-color: #390;
+  color: #fff;
+}

@@ -1,0 +1,104 @@
+<!--pages/orderConfirm/orderConfirm.wxml-->
+<view class="container">
+
+  <!--收货地址-->
+  <view class="addr-opt" bindtap="addrOptFn">
+    <view class="consignee" hidden="{{isname}}">{{name}} {{mobile}}</view>
+    <text>{{value}}</text>
+    <view class="jian"></view>
+  </view>
+
+  <!--订单详情-->
+  <view class="shop-detail " wx:for="{{items}}" data-isRegionSale="{{item.isRegionSale}}" wx:key="i" wx:for-index="idx">
+    <image class="{{gray}}" src="{{img[idx]}}"></image>
+    <view class="info-wrap">
+      <text class="tit ellipsis2">{{item.brand}} {{item.itemName}}</text>
+      <text class="company-name ellipsis2">由 {{item.companyName}} 提供发货和售后服务</text>
+      <view class="price-info">
+        <text>{{item.norm}}</text>
+        <text class="shopqty">x{{item.qty}}</text>
+        <text class="price" hidden='{{yuanjia1}}' style="color:{{item.discountPrice == 0 ? '':color}};text-decoration:{{item.discountPrice == 0 ? '':textDecoration}}">¥ {{acomPrc[idx]}}</text>
+      </view>
+      <view hidden='{{isDiscountPrice}}' class="{{ item.discountPrice == 0 ? 'price-info dsnone':'price-info'}}">
+        <text>{{item.norm}}</text>
+        <text class="shopqty">x{{item.qty}}  </text>
+        <text class="price {{item.gray}}"><text style='color:#b2b2b2;font-size:26rpx;margin-top:4rpx'>优惠价：</text>  ¥ {{discountPriceArr[idx]}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--商品的总额和运费-->
+  <view class="coast">
+    <view class="total-fee">
+      <text class="shop-coast">商品总金额</text>
+      <!-- shopprice -->
+      <text class="{{isDiscountPrice? 'shop-fee':'shop-fee strickout'}}">¥{{realityPrice}}</text>
+    </view>
+    <view class="total-fee" hidden='{{isDiscountPrice}}'>
+      <text class="shop-coast">优惠价总金额</text>
+      <!-- shopprice -->
+      <text class="shop-fee">¥{{discountCount}}</text>
+    </view>
+    <view class="freight">
+      <text class="freight-txt">运费</text>
+      <text class="freight-fee">+¥{{freightfee}}</text>
+    </view>
+    <!-- <view class="full-folding">
+      <text class="folding-txt">折扣</text>
+      <text class="folding-fee">-¥{{cutfee}}</text>
+    </view> -->
+    <view class="full-cut">
+      <text class="cut-txt">优惠劵抵现金额</text>
+      <text class="cut-fee">-¥{{discount}}</text>
+    </view>
+  </view>
+
+  <!--优惠码-->
+  <view hidden='{{isyhm}}' class="coupon-choose promo-box" bindtap='PromoCodeFn'>
+    <view class="choice">使用优惠码</view>
+    <!-- <view class="coupons" hidden='{{isPromoText}}'>
+      <text class="yhm-text">优惠码已优惠：</text>
+      <text>¥</text>
+      <text class="quota">{{discountSpread}}</text>
+    </view> -->
+    <view class="coupons" hidden='{{isPromoText}}'>
+      <text class="yhm-text" >{{PromoCodeData}}</text>
+    </view>
+    <view class="jiantou"></view>
+  </view>
+
+  <modal class="model-box" hidden="{{isPromo}}" title="优惠码" confirm-text="提交" cancel-text="取消" bindcancel="PromoCodeCancel" bindconfirm="PromoCodeConfirm">
+    <input class='promo' bindinput='EditPromoCode' type='text' placeholder="请输入优惠码"  value='{{inputValue}}'/>
+    <view class="promo-hint" hidden='{{promoDisable}}'>{{promoMessage}}</view>
+  </modal>
+
+
+  <!--优惠劵-->
+  <view class="coupon-choose">
+    <view class="choice">使用优惠劵</view>
+    <scroll-view class="coupons-con" scroll-x="true" hidden="{{iscoupon}}">
+      <view class="coupons">
+        <text>¥</text>
+        <text class="quota">{{discount}}</text>
+      </view>
+    </scroll-view>
+    <view class="couponNone" hidden="{{!iscoupon}}">{{coupontxt}}</view>
+  </view>
+  <!--实付金额-->
+  <view class="pay-amount">
+  <scroll-view class="scroll-coupons" scroll-x="true">
+    <!-- <text hidden='{{realfeeNo}}'>实付金额1:<text class="pad"></text> -->
+     <text hidden='{{realfeeNo}}'>实付金额:<text class="pad"></text>
+    <text class="pay-fee"> ¥<text class="realfee"> {{realfee}} </text></text>
+    </text>
+
+    <text hidden='{{coupontotal}}'>实付金额:<text class="pad"></text>
+      <text class="pay-fee"> ¥<text class="realfee"> {{preferentialPrice}} </text></text>
+    </text>
+    </scroll-view>
+  </view>
+
+  <!--支付按钮-->
+  <button class="pay-btn" hidden="{{isDisplay}}" bindtap="{{isWxpayFn}}">微信支付</button>
+  <button class="refer-btn" hidden="{{!isDisplay}}" bindtap="{{isSaveFn}}">提交订单</button>
+</view>

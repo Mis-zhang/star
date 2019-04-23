@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="order-tabBar" hidden="{{isAll}}">
+    <text class="{{coupon1 ? 'red' : ''}}" bindtap="Use">未使用</text>
+    <text class="{{coupon2 ? 'red' : ''}}" bindtap="unused">已使用</text>
+  </view>
+  <view class="{{coupon1?'show':'hidden'}}">
+     <button class="invalid" bindtap="usedNot" hidden="{{isuser}}">不使用优惠劵</button> 
+    <view class="coupons" wx:for="{{coupon}}" wx:key="i" bindtap="rightFn" data-id="{{item.id}}">
+      <view class="discount ">
+        <text>¥</text>
+        <text class="quota" style="font-size:{{item.font>3?65:120}}rpx">{{item.discount}}</text>
+      </view>
+      <view class="term ">
+        <text class="date ">使用日期</text>
+        <text class="time">{{item.useStartTime}}</text>
+        <text class="To">至</text>
+        <text class="time ">{{item.useEndTime}}</text>
+        <view hidden="{{item.fullPrice==0?true:''}}"><text class="full">满{{item.fullPrice}}可用</text></view>
+        <view hidden="{{item.fullPrice==0?'':true}}"><text class="full">无金额门槛</text></view>
+      </view>
+      <view class="draw">
+        <text style="margin-top:{{height}}rpx;line-height:{{heightline}}rpx">{{use}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="{{coupon2?'show':'hidden'}}">
+    <view class="coupons" style="filter:grayscale(1);opacity:0.5;" data-index="{{index}} " wx:for="{{coupond}}" wx:key="i" data-id="{{item.id}}">
+      <view class="discount ">
+        <text>¥</text>
+        <text class="quota" style="font-size:{{item.font>3?65:120}}rpx">{{item.discount}}</text>
+      </view>
+      <view class="term ">
+        <text class="date">使用日期</text>
+        <text class="time">{{item.useStartTime}}</text>
+        <text class="To">至</text>
+        <text class="time ">{{item.useEndTime}}</text>
+        <view hidden="{{item.fullPrice==0?true:''}}"><text class="full">满{{item.fullPrice}}可用</text></view>
+        <view hidden="{{item.fullPrice==0?'':true}}"><text class="full">无金额门槛</text></view>
+      </view>
+      <view class="draw1">
+        <text style="margin-top:{{height}}rpx">{{item.used}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,100 @@
+<view class="container">
+  <view class="mask" style="width:{{screenwidth}};height:{{screenheight}}" hidden="{{isMask}}"></view>
+  <view class="errorTip" class="noPosition" hidden="{{!isPosition}}">
+    <text>请授权当前位置信息</text>
+    <view bindtap="getaddressFn" class="button">点击授权</view>
+  </view>
+  <loading hidden="{{hideloading}}">加载中</loading>
+
+  <!-- 搜索框 -->
+  <view class='search' hidden="{{isPosition}}">
+    <input placeholder="请输入您要搜索的内容" placeholder-style="color:#e2e2e2" confirm-type="search" value="{{searchShop}}" bindinput="bindblurFn" />
+    <!-- <view class='search-button' >搜索</view> -->
+    <view class="search_ifier" bindtap='bindSearchFn'></view>
+  </view>
+
+  <!-- 公告 -->
+  <view class='notice-view'>
+    <view class="example">
+      <view class='notice-text' style='display: flex;align-items: center;'><image src="/images/remind.png" class='remind'/> 公告：</view>
+      <view class="marquee_box">
+        <view class="marquee_text" style="{{orientation}}:{{marqueeDistance}}px;font-size: {{size}}px;">
+          {{text}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--轮播-->
+  <view hidden="{{isPosition}}">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="3000" duration="1000" class="banner" circular="true" hidden="{{bannerImgHide}}">
+      <block wx:for="{{bannerImg}}" wx:key="i" data-index="index">
+        <swiper-item>
+          <image src="{{item}}" mode="scaleToFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- 优惠卷 start -->
+    <view class='coupon-choose' hidden="{{iscoupon}}">
+      <scroll-view class="coupons-con" scroll-x="true">
+        <view class='block' style="width:{{width}}">
+          <view class="coupons" wx:for="{{couponList}}" wx:key="couponKey">
+            <view class='couponPrice'>
+              <text>￥</text>
+              <text class="priceShu">{{item.discount}}</text>
+            </view>
+            <view class='couponPrice-right'>
+              <view class='yhqname'>优惠券</view>
+              <view class='receiveConditions'>
+                <text>消费满{{item.fullPrice}}元使用</text>
+              </view>
+            </view>
+
+          </view>
+        </view>
+        
+      </scroll-view>
+      
+    </view>
+    <!-- 优惠卷 end -->
+    <!-- 商品列表 start -->
+    <view class="shop_min">
+      <view class="recommend">
+        — 热门推荐 —
+      </view>
+      <view class="shop_lists">
+        <view class="lists_every" wx:for="{{shopsData}}" wx:key="i" bindtap="shopdetailFn" data-index="{{index}}">
+          <view class="everyImg">
+            <image src="{{imgPath + item.defaultImg}}" mode="aspectFit"></image>
+          </view>
+          <view class="shop_content">
+            <view class='shopName'>{{item.onlineTitle}}</view>
+            <text class="price">
+              <text class="priceSmall" wx:if="{{item.price!=0}}">¥</text>{{item.price==0?'价格待定':item.price}}
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 商品列表 end -->
+
+    <!--无搜索商品时-->
+    <view class="shopnone" hidden="{{noShoplist}}">抱歉, 该地区暂无商品信息！</view>
+
+    <!--加载中-->
+    <view class="load" hidden="{{iscome}}">
+      <view class="loadstyle" hidden="{{dot}}">
+        <text class="loadding">加载中</text>
+        <view class="change">
+          <view class="{{dotclass[0]}}"></view>
+          <view class="{{dotclass[1]}}"></view>
+          <view class="{{dotclass[2]}}"></view>
+        </view>
+      </view>
+      <view class="loadover" hidden="{{!dot}}">
+        <view class="left"></view>
+        <text>无更多商品</text>
+        <view class="right"></view>
+      </view>
+    </view>
+  </view>
+</view>

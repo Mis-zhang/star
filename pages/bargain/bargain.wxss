@@ -1,0 +1,47 @@
+.errorMsg {
+    background-color: #f60;
+    text-align: center;
+    padding: 0 30rpx;
+    font-size: 30rpx;
+    line-height: 50rpx;
+    height: 50rpx;
+    color: #fff;
+}
+.name,.tel,.plan,.price,.acreage{
+    background-color:#fff;
+    margin:0 auto;
+    border-radius:7rpx 7rpx;
+    line-height:110rpx;
+    height:110rpx;
+    width:95%;
+    display:flex;
+    margin-top:25rpx;    
+}
+ .name-txt,.tel-txt,.plan-txt,.price-txt,.acreage-txt{
+    flex:1;
+    margin-left:2%;
+    font-size:30rpx;
+    color:#2c2c2c;
+}
+input{
+    font-size:30rpx;
+    color:#000;
+    flex:3;
+    height:100%;
+}
+.bargain-right{
+    color:#fff;
+    font-size:40rpx;
+    width:92%;
+    height:100rpx;
+    background-color:#fe6700;
+    position:absolute;
+    bottom:30rpx;
+    left:4%;
+    text-align:center;
+    line-height:100rpx;
+}
+.name-txt .bai{
+    padding:0rpx 30rpx;
+}
+

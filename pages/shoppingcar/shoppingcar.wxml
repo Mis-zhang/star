@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="{{isData ? 'shoppinghide' : 'shoppingshow'}}">
+    <view class="shopping-list" wx:for="{{commodityList}}" wx:key="i">
+      <image src="{{item.img !=''? imgPath+item.img:imgPath+item.defaultImg}}" mode="aspectFit" bindtap="orderDetailFn"></image>
+      <view class="info-wrap">
+        <text class="tit ellipsis">{{item.brand}}{{item.itemName}}</text>
+        <view class="price-info">
+          <text>{{item.norm}}</text>
+          <text class="price">¥{{priceList[index]}}</text>
+        </view>
+        <view class="operation">
+          <text data-cartid="{{item.skuId}}" class="decr-btn" bindtap="decrFn">-</text>
+          <input class="operation-result" value="{{item.qty}}" type="number" bindblur="goodsNumFn" data-cartid="{{item.skuId}}" />
+          <text data-cartid="{{item.skuId}}" hover-class="hover" class="incr-btn" bindtap="incrFn">+</text>
+        </view>
+        <view class="bought">{{item.moq == '' || item.moq == '0' ? '1' : item.moq}}{{item.units}}起订购</view>
+      </view>
+      <text class="del-order" bindtap="removeFn" data-cartid="{{item.skuId}}"></text>
+    </view>
+
+
+  </view>
+  <view  class="shoppingNone {{isShoppingData ? 'shoppinghide' : 'shoppingshow' }}">
+    <text class="shopnone" bindtap="noneFn">购物车里什么也没有，快去购物吧！</text>
+  </view>
+  <view class="footBar">
+    <view class="totail-price" bindtap="sumcalcFn">合计¥{{totalPrice}}</view>
+    <button type="warn" class="settlement-btn" disabled="{{isOrder}}" bindtap="settlementFn">去结算</button>
+  </view>
+</view>

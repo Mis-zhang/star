@@ -1,0 +1,170 @@
+<wxs module="dateUtil" src="../../utils/time.wxs"></wxs>
+<view class="star">
+  <view class="star_tab">
+    <view class="tab_item {{current == 0 ? 'tab_active' : ''}}" data-index="0" bindtap="tabClick">
+      <view class="item_title {{current == 0 ? 'tab_item_active' : ''}}">全部</view>
+      <view class="item_num {{current == 0 ? 'tab_item_active' : ''}}">{{numList.totalNum}}</view>
+    </view>
+    <view class="tab_item {{current == 1 ? 'tab_active' : ''}}" data-index="1" bindtap="tabClick">
+      <view class="item_title {{current == 1 ? 'tab_item_active' : ''}}">好评</view>
+      <view class="item_num {{current == 1 ? 'tab_item_active' : ''}}">{{numList.goodNum}}</view>
+    </view>
+    <view class="tab_item {{current == 2 ? 'tab_active' : ''}}" data-index="2" bindtap="tabClick">
+      <view class="item_title {{current == 2 ? 'tab_item_active' : ''}}">中评</view>
+      <view class="item_num {{current == 2 ? 'tab_item_active' : ''}}">{{numList.middleNum}}</view>
+    </view>
+    <view class="tab_item {{current == 3 ? 'tab_active' : ''}}" data-index="3" bindtap="tabClick">
+      <view class="item_title {{current == 3 ? 'tab_item_active' : ''}}">差评</view>
+      <view class="item_num {{current == 3 ? 'tab_item_active' : ''}}">{{numList.badNum}}</view>
+    </view>
+    <view class="tab_item {{current == 4 ? 'tab_active' : ''}}" data-index="4" bindtap="tabClick">
+      <view class="item_title {{current == 4 ? 'tab_item_active' : ''}}">有图</view>
+      <view class="item_num {{current == 4 ? 'tab_item_active' : ''}}">{{numList.imgNum}}</view>
+    </view>
+  </view>
+  <view class="star_scroll" wx:if="{{starList.length != 0}}">
+    <view class="star_list">
+      <view class="star_item" wx:for="{{starList}}" wx:for-item="item" wx:for-index="index" wx:key="i">
+        <view class="star_top">
+          <view class="star_top_left">
+            <view class="star_tel">{{item.clientName}}</view>
+            <view class="star_star" wx:if="{{item.score == 1}}">
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="star_star" wx:if="{{item.score == 2}}">
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="star_star" wx:if="{{item.score == 3}}">
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="star_star" wx:if="{{item.score == 4}}">
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+            </view>
+            <view class="star_star" wx:if="{{item.score == 5}}">
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_icon">
+                <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+              </view>
+            </view>
+          </view>
+          <view class="star_time">{{dateUtil.dateFormat(item.addTime, 'yyyy-MM-dd')}}</view>
+        </view>
+        <view class="star_container" wx:if="{{item.content == null || item.content == ''}}">
+          此用户暂无填写评价
+        </view>
+        <view class="star_container" wx:else>{{item.content}}</view>
+        <view class="star_update" wx:if="{{item.urls.length != 0}}">
+          <block wx:for="{{item.urls}}" wx:for-item="imgs" wx:for-index="index_img" wx:key="s">
+            <image class="star_update_img" src="{{showImgUrl + imgs.url}}" mode="aspectFit" data-isappend="{{imgs.isAppend}}" data-id="{{imgs.id}}" data-index="{{index_img}}" data-parent="{{index}}" wx:if="{{imgs.isAppend == 0}}" bindtap="lookImg"></image>
+          </block>
+        </view>
+        <view class="star_norm">{{item.norm}}</view>
+        <block wx:if="{{item.status == 2}}">
+          <view class="star_reply">
+            <view class="star_reply_top">
+              <view class="star_reply_icon">
+                <image class="star_reply_img" src="../../images/reply.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_reply_title">商家回复</view>
+            </view>
+            <view class="star_reply_content">{{item.replyContent}}</view>
+          </view>
+        </block>
+        <block wx:if="{{item.status == 3}}">
+          <view class="star_reply" wx:if="{{item.replyContent != null}}">
+            <view class="star_reply_top">
+              <view class="star_reply_icon">
+                <image class="star_reply_img" src="../../images/reply.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_reply_title">商家回复</view>
+            </view>
+            <view class="star_reply_content">{{item.replyContent}}</view>
+          </view>
+          <view class="star_review">
+            <view class="star_review_title">用户{{item.appendTimeDays}}追评</view>
+            <view class="star_review_container">{{item.appendContent}}</view>
+            <view class="star_review_update" wx:if="{{item.urls.length != 0}}">
+              <block wx:for="{{item.urls}}" wx:for-item="imgs" wx:for-index="index_img" wx:key="s">
+                <image class="star_update_img" src="{{showImgUrl + imgs.url}}" mode="aspectFit" data-isappend="{{imgs.isAppend}}" data-id="{{imgs.id}}" data-index="{{index_img}}" data-parent="{{index}}" wx:if="{{imgs.isAppend == 1}}" bindtap="lookImg"></image>
+              </block>
+            </view>
+          </view>
+        </block>
+        <block wx:if="{{item.status == 4}}">
+          <view class="star_reply" wx:if="{{item.replyContent != null}}">
+            <view class="star_reply_top">
+              <view class="star_reply_icon">
+                <image class="star_reply_img" src="../../images/reply.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_reply_title">商家回复</view>
+            </view>
+            <view class="star_reply_content">{{item.replyContent}}</view>
+          </view>
+          <view class="star_review">
+            <view class="star_review_title">用户{{item.appendTimeDays}}追评</view>
+            <view class="star_review_container">{{item.appendContent}}</view>
+            <view class="star_review_update" wx:if="{{item.urls.length != 0}}">
+              <block wx:for="{{item.urls}}" wx:for-item="imgs" wx:for-index="index_img" wx:key="s">
+                <image class="star_update_img" src="{{showImgUrl + imgs.url}}" mode="aspectFit" data-isappend="{{imgs.isAppend}}" data-id="{{imgs.id}}" data-index="{{index_img}}" data-parent="{{index}}" wx:if="{{imgs.isAppend == 1}}" bindtap="lookImg"></image>
+              </block>
+            </view>
+          </view>
+          <view class="star_reply" wx:if="{{item.replyAppendContent != null}}">
+            <view class="star_reply_top">
+              <view class="star_reply_icon">
+                <image class="star_reply_img" src="../../images/reply.png" mode="aspectFit"></image>
+              </view>
+              <view class="star_reply_title">商家回复</view>
+            </view>
+            <view class="star_reply_content">{{item.replyAppendContent}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+  <view class="weui-loadmore" wx:elif="{{isAllMore}}">
+    <view class="weui-loadmore__tips">已加载全部数据</view>
+  </view>
+</view>
+<view class="nostar" wx:if="{{starList.length == 0}}">暂无评价</view>

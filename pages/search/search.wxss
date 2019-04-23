@@ -1,0 +1,243 @@
+/* pages/search/search.wxss */
+/* 搜索 */
+page{
+    background:#fff;
+}
+/* .container .search{
+    width:100%;
+    height:95rpx;
+    background:#fff;
+    padding-top:30rpx;
+    position:relative;
+    border-bottom:1px solid #dddddd;
+    margin-top:1px solid #dddddd;
+}
+.container .search .icon{
+     width:45rpx;
+     height:45rpx;
+     background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1N0Q1QjQzOTE1MjUxMUU3ODVBRkU4RjAyMjZFODVCMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1N0Q1QjQzQTE1MjUxMUU3ODVBRkU4RjAyMjZFODVCMiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU3RDVCNDM3MTUyNTExRTc4NUFGRThGMDIyNkU4NUIyIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3RDVCNDM4MTUyNTExRTc4NUFGRThGMDIyNkU4NUIyIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+LbbEIQAAAvlJREFUeNrEmH9ojVEYx9/XrvlRuopFs6TUWmN0dVlCS1OYf/zIKL8lRuZH8geKaFJaRF3Cxh8SE1F+tH9IIi1zb35klksprWZMWlO2jO+p567H47y/3PfkqU/d8zzve9/ve85zznnOayeTScunDQErwBQQB0VgGIv/AK2gCbwCl0GH15/GYrH+3xEfIkaBbWANGONy3SAwiVBWA+pBAqT9vO0Aj/hG8Brs9RCiM9VrO6iXdvm5wa1nzoN1Gn8faAQvQSfoAblgJJgI5mt6rBbMAUvA96Bi7oPZwvcBnALXwHuXl1C5tIiGdjTzzwPPwDTQ5XeY7miEnAATwFEPIcregCOgGJzRCH3iN2f2gwrhW0xj3x0wZ76CKoKbeqkGLzEl4KCIl4MbVnameme18FWCBW5izonYdsqdMOwiOCB8l5zEzASlzP8YnLTCtUPgLWtHaRH9S0y1uLHaMmPrRXuPU89k7DlIGRLzCLSzdnEqlYpyMdNBPrvgtGXW6tlvmyeyElMmLk4bFnNXtMu4mCIR7DAspl20C7mYqNh3Og2L6RHtoW7bQY5hMfKZNg90iQvzDIvJFe1u/vBWETQtZrymGugX81AESw2LWSnazVyMWvo/seBWw3lTKdqNXEwfCcrYCLDUkJAqUdB9QUGelpmdEDcd51kektmazfeWbprdAy+YX5WLV0IWoyrIgcK3z2nOb9CMbU1IQi5oCnVVT7c5iXlKVbxUnshCRA718FpN7J3XaribtnluW0hoRUAhC6kUWeYQPwwKvE4H5fRwbnEa85t0sMt3eMA4WhpuU+1c4iJ2MHjwR4Y7nLXV9LtK5x+d9dIhrgX8ouvV7j/5H2ZhA6b3cjcxGdtJZ6WIZdY2QdBZ28dXiEJarDZT1wat6upov6vltYvG8uwAn0QKaNimglmUH9La6MTYRHnTInZrJWyVw/9fDyJG12NjwXDwDXykkrXX4z419Mc0/p/ZiMnG4rSgzmW+zxHr/1gzfZVQQzaDFse63wIMAG7LmTKcigpWAAAAAElFTkSuQmCC) no-repeat 0rpx 0rpx;
+     background-size:35rpx 35rpx;
+     position:absolute;
+     top:45rpx;
+     left:55rpx;
+     z-index:20;
+}
+.container .search .inputsearch{
+    width:73.33%;
+    height:70rpx;
+    margin-left:4%;
+    border-radius:6rpx 6rpx;
+    background:#ededed;
+}
+.container .search .input{
+    width:88.15%;
+    height:70rpx;
+    font-size:30rpx;
+    margin-left:11.8%;
+}
+.container .search .btn{
+    width:125rpx;
+    height:70rpx;
+    position:absolute;
+    right:30rpx;
+    top:30rpx;
+    line-height:70rpx;
+    text-align:center;
+    border:1px solid #ddd;
+    border-radius:6rpx 6rpx;
+    font-size:28rpx;
+    background:#f0f0f0;
+} */
+/* 分类按钮*/
+/* .pure .btnfy{
+    width:92%;
+    height:70rpx;
+    line-height:70rpx;
+    text-align:center;
+    border-radius:6rpx 6rpx;
+    font-size:30rpx;
+    background:#ededed;
+    font-weight:600;
+    color:#666;
+}
+.pure{
+    margin-top:17rpx;
+    height:auto;
+} */
+/*分类详情*/
+/* .classify,.hotgroom{
+    width:94.8%;
+    height:auto;
+    margin-left:4%;
+    margin-top:40rpx;
+    float:left;
+}
+.classify .wenzi{
+    font-size:32rpx;
+    font-weight:600;
+    color:#333;
+}
+.classify .cfylist,.groomlist{
+    width:auto;
+    height:45rpx;
+    padding:0px 30rpx;
+    float:left;
+    background:#ededed;
+    text-align:center;
+    line-height:45rpx;
+    border:1px solid #ddd;
+    border-radius:6rpx 6rpx;
+    margin-top:20rpx;
+    margin-right:20rpx;
+    font-size:25rpx;
+    color:#666;
+} */
+.searchList{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.srarchTitle{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  color: #c2c2c2;
+  font-size: 32rpx;
+}
+
+.shop_lists{
+  width: 92%;
+  padding: 0 4%;
+  background: #fff;
+  display: flex;
+  flex-direction:row;
+ flex-wrap:wrap;
+ justify-content:space-between;
+}
+.lists_every{
+  width: 334rpx;
+  height: 466rpx;
+  margin-bottom: 20rpx;
+}
+.everyImg{
+  width: 100%;
+  height: 334rpx;
+  box-sizing: border-box;
+  border: 1px solid #eaeaea;
+}
+.everyImg image{
+  width: 100%;
+  height: 100%;
+}
+.shop_content{
+  height: 132rpx;
+  width: 100%;
+}
+.shopName{
+  display: inline-block;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #000;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 10rpx;
+}
+.shop_content .price{
+  display: block;
+  text-align: center;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #e4383b;
+}
+.shop_content .priceSmall{
+  font-size: 24rpx;
+}
+.showTile{
+  width: 100%;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  color: #999;
+  font-size: 40rpx;
+}
+.load {
+  width: 100%;
+  height: 150rpx;
+  background-color: #fff;
+  line-height: 150rpx;
+  text-align: center;
+  position: relative;
+}
+
+.load .change {
+  width: 100rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 70rpx;
+  right: 200rpx;
+}
+
+.load .change view {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50% 50%;
+  background-color: #fff;
+  border: 1rpx solid #333;
+  float: left;
+  margin-left: 15rpx;
+}
+
+.load .loadstyle {
+  width: 275rpx;
+  height: auto;
+  margin: 0 auto;
+}
+
+.load .change .on {
+  background: #333;
+}
+
+.load .loadover {
+  color: #333;
+}
+
+.load .loadover view {
+  width: 150rpx;
+  height: 1rpx;
+  background: #333;
+}
+
+.load .loadover .left {
+  position: absolute;
+  top: 75rpx;
+  left: 125rpx;
+}
+
+.load .loadover .right {
+  position: absolute;
+  top: 75rpx;
+  right: 125rpx;
+}
+
+.load .change .on {
+  background: #333;
+}
+.shopnone {
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx; 
+  text-align: center;
+  color: #999;
+  font-size: 38rpx;
+}
+.load .change .on {
+  background: #333;
+}

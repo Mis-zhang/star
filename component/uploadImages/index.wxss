@@ -1,0 +1,72 @@
+.add {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.add .add_icon {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 28rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  background: #ffffff;
+}
+.add .add_icon:nth-child(4),
+.add .add_icon:nth-child(8)
+ {
+  margin-right: 0rpx;
+}
+.add .add_icon .add_icon_img {
+  width: 140rpx;
+  height: 140rpx;
+}
+.add_icon_active {
+  position: absolute;
+  right: -10rpx;
+  top: -10rpx;
+  width: 38rpx;
+  height: 38rpx;
+  z-index: 9999;
+  background: #ffffff;
+}
+ .photo {
+  width: 137rpx !important;
+  height: 137rpx !important;
+  border: 1rpx dashed #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ .photo .photo_icon {
+  width: 62rpx;
+  height: 53rpx;
+}
+.photo .photo_icon .photo_icon_img {
+  width: 62rpx;
+  height: 53rpx;
+}
+ .photo .photo_title {
+  width: 100%;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #aaaaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.submit {
+  width: 100%;
+  height: 110rpx;
+  font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #ffffff;
+  background: #e03836;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

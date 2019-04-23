@@ -1,0 +1,30 @@
+<view class="container">
+<!--警告提示框-->
+  <view class="errorMsg" hidden="{{isError}}">{{errorMsg}}</view>
+<!--姓名填写-->
+   <view class="name">
+      <text class="name-txt">姓<text class="bai"></text>名: </text>
+      <input value="{{name}}" placeholder="请输入" placeholder-style="color:#ddd" bindinput="nameFn" type="text"/>
+   </view>
+<!--电话填写-->
+   <view class="tel">
+      <text class="tel-txt">手机号码: </text>
+      <input value="{{tel}}" placeholder="请输入" placeholder-style="color:#ddd" bindinput="telFn" type="number"/>
+   </view>
+   <!--期望价格-->
+   <view class="price">
+      <text class="price-txt">期望价格: </text>
+      <input value="{{price}}" placeholder="请输入" maxlength="7" placeholder-style="color:#ddd"  bindinput="priceFn" type="digit"/>
+   </view>
+   <!--种植面积-->
+   <view class="acreage">
+      <text class="acreage-txt">种植面积: </text>
+      <input value="{{acreage}}" placeholder="(亩)" maxlength="7" placeholder-style="color:#ddd" bindinput="acreageFn" type="digit"/>
+   </view>
+    <!--计划采购量-->
+   <view class="plan">
+      <text class="plan-txt">计划采购量: </text>
+      <input value="{{plan}}" placeholder="请输入"  maxlength="7" placeholder-style="color:#ddd" bindinput="planFn" type="digit"/>
+   </view>
+   <button class="bargain-right" bindtap="commitFn">立即砍价</button>
+</view>

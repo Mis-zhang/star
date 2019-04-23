@@ -1,0 +1,438 @@
+/* pages/orderDetail/orderDetail.wxss */
+
+/*商家联系电话*/
+
+.telephone {
+  width: 100%;
+  height: 190rpx;
+  background: #ff5319;
+}
+.shopqty{
+  padding-left:30rpx;
+}
+.telephone .tel-logo {
+  width: 17%;
+  height: 100%;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABoCAYAAAAHIFUvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RTREMzExNTE1MjUxMUU3OUFENkI0RDc1NzQ3NTJGMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RTREMzExNjE1MjUxMUU3OUFENkI0RDc1NzQ3NTJGMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRFNEQzMTEzMTUyNTExRTc5QUQ2QjRENzU3NDc1MkYzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRFNEQzMTE0MTUyNTExRTc5QUQ2QjRENzU3NDc1MkYzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+zjZK8QAADH9JREFUeNrsXQtwVcUZ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') no-repeat 10rpx 50rpx;
+  background-size: 100rpx;
+  margin-left: 3.33%;
+  float: left;
+}
+
+.telephone .tel-content {
+  width: 77.66%;
+  height: auto;
+  margin-left: 1.66%;
+  float: left;
+  font-size: 30rpx;
+  color: #fff;
+  margin-top: 60rpx;
+}
+
+.telephone .tel-content .contact {
+  width: auto;
+  height: 50rpx;
+  font-weight: 600;
+  font-size: 27rpx;
+}
+
+.telephone .tel-content .traderName {
+  width: auto;
+  height: 30rpx;
+  margin-left: 6rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+
+.telephone .tel-content .traderMob {
+  width: auto;
+  height: auto;
+  padding-top: 15rpx;
+  font-size: 32rpx;
+  margin-left: 25rpx;
+  font-weight: 600;
+}
+
+/* 具体收货地址*/
+
+.specific-addr {
+  overflow: hidden;
+  width: 100%;
+  /* height: 140rpx; */
+   padding-bottom: 10rpx;  
+  margin-top: 1rpx;
+  background: #fff;
+}
+
+.specific-addr .add-logo {
+  width: 8%;
+  /* height: 100%; */
+  height: 105rpx;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAmCAYAAABK4fLXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmZjNjODhjYi1jMjE1LTVlNGUtYmM4OC03MDRiNDllZDZjZTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjJGOUE4MDZGNEJDMTFFNjlFODBBQzE5MDNBM0U1RUUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjJGOUE4MDVGNEJDMTFFNjlFODBBQzE5MDNBM0U1RUUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmRmMTA2MzYwLWJhZTAtM2Y0YS1iOGZmLTk0NTU0YjQ5YmRlZCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpmZjNjODhjYi1jMjE1LTVlNGUtYmM4OC03MDRiNDllZDZjZTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7Q4BXzAAAEg0lEQVR42rRYaWhVRxh9XtK41EbcMIo1aty6aNxtQzSoP9QqivjHWFvFqi3uSCPWuEBTGzQUA4qKa23FaH+0NWqrFlpLcSkh7tiqCWrcgxUDGusaz/c4I1+Hue/d+0I/OG/mznpm7rfdV6+2tjZiS05OTiSGvA70AtJZTwbuAVeBc8Dx4uLiB5EQkhRwXGPgA2ACkBVn7D0cYjfKnSCzP8ji9QLcxBxgGdAsEl5+A3JBpixREm8AGxwnfwacAk4CN4GHQArQFegOdHTsswpE5oclMRPFGqv5O2AzN6+KcbAuwEBgNpCh2k8Dw0HmZlwSIPAJinWqqRyYCPwZ9B1gI7PWZyi+VF3/CDH0X9fjPYvAaIvAr0CPMAQsMgUoRgCP2dQcKMM+DZwk0NEGxW7Vtw0YyneesNBC5CB32dQKWO93ExtVXSZOjrP+O8DHwKfA+z4KaYicR5Gtmibh0EP+QwINvVG8pwZNjbF5LhXzKE9UCGwHKoDfgXd9iJxFsUQ1bbZvQivPF8B1HwKiIyuBlkAJIFY0jXPEWw4CjlC5XUT02u0xbmSUBCodUA5jRxUdky1NxR0Dg8XmAZkzBlgLbOIJ3+I6F0S5se5Kn4PMUPXF5iY+VI1rwPa5Y+LPjBdCUJzOZZ8NDpKM+IJcEBnruI0SvrqoXmFMRyGRqcb85FhYTj+A1/15AIN4yjkii3zG6H2yPTIXqaY3tMVo8bwQZinWcAjoi5O2dAy5pupthURrPpzB5GeOCcZqfgnpIoxOjHL03VH1FE9ZSLXPYj1iWEssKWfp8h/aATb0Aiz2L9AoARLJLB85+nTAqvWoSMavu+QITTQpJIkBLE/6JElGaoREJR8y7MCizFNkQUgSy5l7uLKrFqpe7THOR98N0M8x4QflSZsG2R2HmYUiFdgBZX/qGNJJ1Ss8mpKRcY4JV4B8yT18TmWLuO7VrOf7jBmtU0AhsUs1TMEpkh2TltI99xdTptnZOiTp4FwGseiBcAsXHbc0kbEnavYYU+Xh5xYetrLxNSuka5nG0P02sIe2/hdwjBmTeNQi4G8gDet+7yCQZOUSeTqKLlYdEkv6+BCRxLczw7codDdagWTih4HpciMgUOkz/2vgVdaPYlzpSxJ4uMGIaOSbOE5ILCWNyteJC2fFuEW5hRFMfl4mNq7MSsLxbdbfBPYG+Na4zYhYE8daxPXv1DmL1hdPBZ27zIqMNxvJ99yzLjkmCMir3sdvE5ED2GuJb7aNzksk8lwlpSeYQYXdPA340TLTQ9hjeNCPn4GMmvW1U+GC2+Ls3wT4CvjIai8BgTGuCX4B7A8q3grVlk7tXh+DQBt6YE1Abne8H4FYJIzSLaSDOqjaxVd86xifSgLtrKQ5HQR21fWvgVImsPOY5Eb4WXhF+ZfG1J3mKjfJxObnguiPF0LXiqycMY/XnsqbSmW7WFmvoATC/ElipID5h0ndJJ48AV4xuYG8PlpZYPESMP1Cpv1GDIH7QG+Vzv+vJCLUjRVWmyjw+UQWS6qDM1zIhFVMeQsjakLyQoABAIfhU/mT56mfAAAAAElFTkSuQmCC') no-repeat 0rpx 30rpx;
+  background-size: 50rpx 57rpx;
+  margin-left: 3.33%;
+  float: left;
+}
+
+.specific-addr .receiver-content {
+  width: 450rpx;
+  height: auto;
+  margin-left: 4.66%;
+  float: left;
+  font-size: 30rpx;
+  color: #4b4b4b;
+  margin-top: 30rpx;
+}
+
+.specific-addr .receiver-content .contactName {
+  width: auto;
+  height: 30rpx;
+  color: #353535;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+
+.specific-addr .receiver-content .contactMob {
+  /* width: auto; */
+  /* width: 100%; */
+  /* height: 30rpx; */
+  color: #353535;
+  margin-left: 30rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+   word-break:break-all;
+   word-wrap:break-word;
+}
+
+.specific-addr .receiver-content .contactAddr {
+  display: block;
+  width: auto;
+  height: auto;
+  color: #353535;
+  padding-top: 15rpx;
+  font-size: 25rpx;
+}
+
+/*订单详情*/
+
+.shop-detail {
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 30rpx 0 30rpx 30rpx;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.shop-detail image {
+  float: left;
+  width: 170rpx;
+  height: 170rpx;
+  border-bottom: 1px solid #fef5f5;
+}
+
+.shop-detail .company-name {
+  display: block;
+  font-size: 30rpx;
+  color: #c3c3c3;
+  line-height: 1;
+  overflow: hidden;
+  margin-top: 10rpx;
+  height: 61rpx;
+}
+
+.info-wrap {
+  padding: 0 30rpx;
+  width: 380rpx;
+  overflow: hidden;
+  flex: 1;
+}
+
+.info-wrap .tit {
+  font-size: 30rpx;
+  color: #000;
+  line-height: 40rpx;
+  overflow: hidden;
+}
+
+.price-info {
+  padding: 10rpx 0 0rpx;
+  overflow: hidden;
+}
+
+.price-info text {
+  font-size: 26rpx;
+  color: #b2b2b2;
+  float: left;
+}
+
+.price-info .price {
+  font-size: 35rpx;
+  color: #e4383b;
+  float: right;
+}
+
+/*商品的总额和运费*/
+
+.coast {
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  color: #b2b2b2;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.coast .total-fee, .freight, .full-cut, .full-folding,.full-yhm,.integral {
+  flex: 1;
+  margin: 15rpx 35rpx;
+  font-size: 30rpx;
+}
+
+.coast .shop-coast, .freight-txt, .cut-txt, .folding-txt,.integral-txt,.yhm-text {
+  float: left;
+}
+
+.coast .shop-fee, .freight-fee, .cut-fee, .folding-fee ,.integral-fee,.yhm-fee{
+  float: right;
+}
+.yhm-fee{
+  color: #b2b2b2;
+}
+
+
+
+/*商品的总额+运费*/
+
+.total {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  line-height: 100rpx;
+  font-size: 35rpx;
+  margin-top: 1px;
+}
+
+.total .total-txt {
+  float: left;
+  /* font-weight: 600; */
+  color: #353535;
+  margin-left: 35rpx;
+}
+
+.total .total-fee {
+  float: right;
+  font-weight: 600;
+  color: #e4383b;
+  margin-right: 35rpx;
+}
+
+/*支付方式*/
+
+.pay-way {
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  line-height: 100rpx;
+  margin: 20rpx 0rpx;
+  font-size: 35rpx;
+}
+
+.pay-way .pay-txt {
+  float: left;
+  /* font-weight: 600; */
+  color: #353535;
+  margin-left: 35rpx;
+}
+
+.pay-way .pay-wx {
+  float: right;
+  /* font-weight: 600; */
+  color: #666;
+  margin-right: 35rpx;
+}
+
+/*订单编号*/
+
+.order-card {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 35rpx;
+}
+
+.order-card .card-txt {
+  float: left;
+  /* font-weight: 600; */
+  color: #353535;
+  margin-left: 35rpx;
+}
+
+.order-card .card-id {
+  float: right;
+  /* font-weight: 600; */
+  color: #666;
+  margin-right: 35rpx;
+}
+
+/*商品满赠的物品的名称，规格，和数量*/
+
+.full-gifts {
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  background: #fff;
+  color: #b2b2b2;
+  font-size: 30rpx;
+  text-align: right;
+  line-height: 100rpx;
+}
+
+.giftdetail {
+  width: 650rpx;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-left: 100rpx;
+}
+
+.zeng {
+  padding-left: 35rpx;
+  float: left;
+}
+
+.giftData {
+  border-bottom: 1px solid #f5f5f5;
+  flex: 1;
+}
+
+.giftname {
+  float: left;
+}
+
+.giftnumber {
+  float: right;
+  padding-right: 40rpx;
+}
+
+/*下单时间*/
+
+.order-time {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  font-size: 35rpx;
+  margin-top: 1px;
+  margin-bottom:40rpx;
+}
+
+.order-time .time-txt {
+  float: left;
+  /* font-weight: 600; */
+  color: #353535;
+  margin-left: 35rpx;
+}
+
+.order-time .time-id {
+  float: right;
+  /* font-weight: 600; */
+  color: #666;
+  margin-right: 35rpx;
+}
+
+/*选择按钮*/
+
+.pay-btn {
+  width: 92%;
+  height: 85rpx;
+  background: #e4383b;
+  line-height: 85rpx;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  font-size: 36rpx;
+  margin-bottom: 30rpx;
+}
+
+.refer-btn {
+  width: 92%;
+  height: 85rpx;
+  background: #fff;
+  line-height: 85rpx;
+  margin-top: 20rpx;
+  color: #666;
+  text-align: center;
+  font-weight: 600;
+  font-size: 36rpx;
+  margin-bottom: 30rpx;
+}
+.tuibox{
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100000
+}
+.tuikuan{
+  width: 100%;
+  height: 580rpx;
+  position: fixed;
+  top: 50%;
+  margin-top: 30rpx;
+  z-index: 99;
+  font-size: 28rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  box-shadow: 0,0,0,rgba(0, 0, 0, .5)
+}
+.checkbox{
+  width: 100%;
+  display: block;
+  /* text-align: center; */
+  margin-top: 30rpx;
+}
+.checkbtn{
+  width: 100%;
+}
+.zhezhao{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 98;
+}
+.tuiButton{
+  display: inline-block;
+  width: 48%;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+.tuiButton:first-child{
+  margin-right: 2%
+}
+.tuiButton:last-child{
+  margin-left: 2%
+}
+
+.left{
+  background: #ec9d2b;
+}
+.right{
+  background: #390;
+}

@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="mask" style="width:{{screenwidth}};height:{{screenheight}}" hidden="{{isMask}}"></view>
+  <view class="user-head">
+    <open-data type="userAvatarUrl" class="user-icon"></open-data>
+    <open-data type="userNickName" class="userName"></open-data>
+    <!-- <image src="{{avatarUrl ? avatarUrl : '../../images/farmer.png'}}"></image>
+    <view class='userName'>{{nickName? nickName:''}}</view> -->
+  </view>
+  <view class="center-list">
+    <view class="full_order icon-der" bindtap="myOrderListFn">查看订单
+      <view class='all_order'>全部订单</view>
+    </view>
+    <view class='every_order'>
+      <view class='everyChoice' bindtap='{{isOpenPay==1?"myDaiPay":"jinzhiFn"}}'>
+        <view class='choiceImg orderOne'>
+        </view>
+        <text class='choicetitle'>待付款</text>
+      </view>
+      <view class='everyChoice' bindtap='{{isOpenPay==1?"myDaiFh":"jinzhiFn"}}'>
+        <view class='choiceImg orderTwo'>
+        </view>
+        <text class='choicetitle'>待发货</text>
+      </view>
+      <view class='everyChoice' bindtap='{{isOpenPay==1?"myDaiSh":"jinzhiFn"}}'>
+        <view class='choiceImg orderThree'>
+        </view>
+        <text class='choicetitle'>待收货</text>
+      </view>
+      <view class='everyChoice' bindtap='{{isOpenPay==1?"myComplete":"jinzhiFn"}}'>
+        <view class='choiceImg orderFour'>
+        </view>
+        <text class='choicetitle'>已完成</text>
+      </view>
+      <view class='everyChoice' bindtap='{{isOpenPay==1?"orderRefund":"jinzhiFn"}}'>
+        <view class='choiceImg orderFive'>
+        </view>
+        <text class='choicetitle'>退款订单</text>
+      </view>
+    </view>
+    <view class="list icon-addr" bindtap="myAddrListFn">地址管理</view>
+    <view class="list icon-kefu" bindtap="myKefu">联系客服</view>
+  </view>
+</view>

@@ -1,0 +1,279 @@
+.container{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.nolist {
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  color: #999;
+  font-size: 38rpx;
+}
+.order-paid, .order-unpaid {
+  margin: 20rpx 0;
+  overflow: hidden;
+}
+.order-list {
+  overflow: hidden;
+  margin-bottom: 30rpx;
+}
+
+.order-head {
+  background-color: #fff;
+  padding: 0 30rpx;
+  display: block;
+  line-height: 90rpx;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+
+.order-status {
+  float: left;
+  color: #ff774b;
+  font-size: 30rpx;
+}
+
+.paid-status {
+  color: #7f8389;
+}
+
+.order-price {
+  float: right;
+}
+
+.order-price .totail-price {
+  font-size: 30rpx;
+}
+
+.order-con {
+  border-top: 1rpx solid #efeff4;
+  padding: 25rpx 20rpx;
+  background-color: #fff;
+  display: flex;
+}
+
+.order-con image {
+  width: 170rpx;
+  height: 170rpx;
+  margin-right: 30rpx;
+}
+
+.order-info {
+  height: 100%;
+  float: left;
+  flex: 4;
+  overflow: hidden;
+}
+
+.order-info .order-tit {
+  margin-top: 20rpx;
+  color: #353535;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+
+.order-info .order-pro {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+  padding: 6rpx 0;
+  color: #b2b2b2;
+  overflow: hidden;
+}
+
+/* .peice-wrap {
+  overflow: hidden;
+  line-height: 50rpx;
+} */
+
+ /* .peice-wrap .weight, .peice-wrap .num { 
+  color: #b2b2b2;
+  font-size: 26rpx;
+  float: left;
+}
+
+.peice-wrap .weight {
+  margin-right: 30rpx;
+}
+
+.peice-wrap .price {
+  color: #333;
+  font-size: 30rpx;
+  float: right;
+} */
+
+ .order-work {
+  overflow: hidden;
+  border-top: 1rpx solid #efeff4;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  text-align: right;
+} 
+
+ .order-work .conpousTip {
+  color: #e4383b;
+  font-size: 26rpx;
+  float: left;
+  padding-top: 15rpx;
+} 
+
+.order-work .conpousTiped {
+  color: #7f8389;
+  padding: 0;
+  float: left;
+}
+
+/* .order-work button {
+  display: inline-block;
+  line-height: 1;
+  font-size: 26rpx;
+  padding: 18rpx 34rpx;
+  color: #353535;
+  background-color: #fff;
+}
+
+.order-work button::after {
+  border-color: #888;
+}
+
+.order-work .order-payment {
+  margin-left: 50rpx;
+  color: #e4383b;
+}
+
+.order-work .order-payment::after {
+  border-color: #e4383b;
+} */
+
+
+
+
+
+image {
+  width: 320rpx;
+  height: 240rpx;
+}
+
+
+
+/*不能下单时*/
+
+/*商品详情*/
+
+.shop-detail .shop-img {
+  width: 24%;
+  height: 170rpx;
+  /* border-bottom: 1px solid #fef5f5; */
+  float: left;
+  margin-left: 4%;
+  margin-top: 30rpx;
+}
+
+.shop-detail .shop-img image {
+  width: 180rpx;
+  height: 170rpx;
+  margin: 0 auto;
+  display: block;
+}
+
+.shop-detail .shop-content {
+  width: 69.34%;
+  height: 100%;
+  margin-left: 2%;
+  float: left;
+}
+
+.shopdetail {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+}
+
+.shop-detail .shop-content .shop-name {
+  width: 100%;
+  height: auto;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.shop-detail .shop-content .company-name {
+  width: 100%;
+  height: auto;
+  font-size: 29rpx;
+  margin-top: 15rpx;
+  color: #c3c3c3;
+  font-weight: 500;
+}
+
+.shop-detail .shop-content .spec {
+  flex: 2;
+  font-size: 30rpx;
+  color: #c3c3c3;
+  font-weight: 600;
+}
+
+.shop-detail .shop-content .shopprice {
+  font-size: 30rpx;
+  float: left;
+  flex: 1;
+  text-align: center;
+  color: #333;
+}
+
+.number {
+  font-size: 35rpx;
+}
+
+.shop-detail .shop-content .operation {
+  margin: -6rpx 15rpx;
+}
+
+
+.tuikuan{
+  width: 420rpx;
+  height: 520rpx;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -210rpx;
+  margin-top: -210rpx;
+  z-index: 99;
+  font-size: 28rpx;
+  background: #ccc;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}
+.checkbox{
+  width: 100%;
+  display: block;
+  /* text-align: center; */
+  margin-top: 30rpx;
+}
+.zhezhao{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 98;
+}
+.tuiButton{
+  display: inline-block;
+  width: 190rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+.left{
+  background: #ec9d2b;
+}
+.right{
+  background: #390;
+}

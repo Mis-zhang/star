@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="select-service" bindtap="facilitatorFn">
+    <view class="company">
+      <text class="companyname">{{company}}</text>
+      <view class="companyadd">
+        <text class="addtxt">地址:</text>
+        <text class="addDetail">{{fullRegionName}},{{address}}</text>
+      </view>
+      <view class="companyadd mob">
+        <text class="addtxt">电话:</text>
+        <text class="addDetail">{{mob}}</text>
+        <view class="mob-btn" bindtap='getMobFn'>点击拨号</view>
+      </view>
+      <view class="companyfare" hidden="{{isPlant}}">
+        <text class="faretxt">运费:</text>
+        <text class="fareDetail">{{shopfeedetail==''?'免运费':shopfeedetail}}</text>
+      </view>
+      <!-- <view class="companyPromotion" hidden="{{isshopcut}}">
+        <text class="Promotiontxt">促销:</text>
+        <text class="PromotionDetail">{{shopcutdetail}}</text>
+      </view> -->
+    </view>
+  </view>
+</view>
+<!-- <text style="padding-left:70rpx"></text> -->

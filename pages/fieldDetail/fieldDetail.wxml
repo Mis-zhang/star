@@ -1,0 +1,217 @@
+<!--pages/fieldDetail/fieldDetail.wxml-->
+<view class="container">
+  <view class="item-img">
+    <image src="{{imgPath + fieldInfo.plot.plotsDetail.img}}" mode="aspectFit"></image>
+  </view>
+  <view class="item-tit-wrap">
+    <view class="item-tit ellipsis">{{fieldInfo.plot.name}}</view>
+      <view hidden="{{isclientId == false}}" class="{{ isFollow == 1 ? 'item-follow follow' : 'item-follow'}}" bindtap="followFn">关注</view>
+  </view>
+  <view class="item-box">
+    <view class="item-row">
+      <text class="item-key">品种名称：</text>
+      <text class="item-val">{{fieldInfo.plot.itemName}}</text>
+    </view>
+    <view class="item-row">
+      <text class="item-key">所属厂商：</text>
+      <text class="item-val">{{fieldInfo.plot.companyUnitName}}</text>
+    </view>
+    <view class="item-row">
+      <text class="item-key">示范单位：</text>
+      <text class="item-val">{{fieldInfo.plot.companyName}}</text>
+    </view>
+    <view class="item-row">
+      <text class="item-key">种植区域：</text>
+      <text class="item-val">{{fieldInfo.plot.region}}</text>
+    </view>
+    <view class="item-row">
+      <text class="item-key">品种详情：</text>
+
+      <text class="item-val {{isLook == false ? 'two_line' :''}}" wx:if="{{fieldInfo.plot.idbSpecy.introduction != ''}}"> {{fieldInfo.plot.idbSpecy.introduction}}</text>
+      <text class="item-val" wx:else>暂无</text>
+    </view>
+    <view class="look-daile" wx:if="{{isLook == false}}" hidden="{{isIntroduction == false}}" bindtap="lookFn">
+      查看更多
+    </view>
+    <view class='look-daile' wx:else bindtap="lookFn">
+      收起
+    </view>
+  </view>
+
+  <!-- tab -->
+  <view class="swich-tab">
+    <text data-swichIdx="1" bindtap="swichFn" class="{{swichIdx == 1 ? 'on' : ''}}">地理位置</text>
+    <text data-swichIdx="2" bindtap="swichFn" class="{{swichIdx == 2 ? 'on' : ''}}">示范日志</text>
+    <text data-swichIdx="3" bindtap="swichFn" class="{{swichIdx == 3 ? 'on' : ''}}">用户留言</text>
+  </view>
+
+  <!-- 地理位置-start -->
+  <view class="model-map" hidden="{{swichIdx != 1}}">
+    <view class="region-name">{{fieldInfo.plot.region}}</view>
+       <map class="field-map" longitude="{{plotsPositionList[0].longitude == ''? 113.324520: plotsPositionList[0].longitude}}" latitude="{{plotsPositionList[0].latitude == '' ? 23.099994: plotsPositionList[0].latitude}}" scale="12" markers='{{markers}}' show-location style="width: 100%; height: 300px;"></map>  
+  </view>
+  <!-- 地理位置-end -->
+
+
+  <!-- 示范日志-start -->
+  <view class="model-log" hidden="{{swichIdx != 2}}">
+    <!-- 示范日志-tab -->
+    <view class="swich-tab log-tab">
+      <text data-logIdx="1" bindtap="swichFn" class="{{logIdx == 1 ? 'on' : ''}}">田间表现</text>
+      <text data-logIdx="2" bindtap="swichFn" class="{{logIdx == 2 ? 'on' : ''}}">种植技术</text>
+    </view>
+    <!-- 田间表现-start -->
+    <view class="farm-log">
+      <view hidden='{{logIdx != 1}}'>
+        <view class='prompt' hidden="{{demoLogData != ''}}">暂无田间表现信息</view>
+      </view>
+      <!-- 田间表现属性 -->
+      <view class="field" wx:for="{{demoLogData}}" wx:key="log" hidden="{{logIdx != 1}}">
+        <view class="farm-tit">
+          <text>{{item.addTime}}</text>
+        </view>
+        <view class="log-row" wx:for="{{demoLogData[index].infoValue}}" wx:for-item="Vitem" wx:key="value">
+          <view class="log-key">{{Vitem.paramName}}</view>
+          <view class="log-val">{{Vitem.paramValue}}</view>
+        </view>
+        <view class="log-imgs">
+          <image class="log-img" data-id="{{demoLogData[index].plotsInfoImgs[idx]}}" wx:for="{{demoLogData[index].plotsInfoImgs}}" wx:for-item="VitemImg" wx:key="imgs" wx:for-index="idx" mode="aspectFit" bindtap="previewImageFn" src="{{imgPath + VitemImg}}" bindtap="imgtianFn"></image>
+        </view>
+        <view class="logs-other">
+          <text class="praise" bindtap='fieldisZan' hidden="{{clientId == 0}}" data-id="{{item.id}}">点赞({{item.clickNum}})</text>
+          <text class="comment" bindtap="msgesHideFn" data-id="{{item.id}}">评论({{item.count}})</text>
+        </view>
+        
+        <view class="hide {{currentItem == item.id?'show':'hide'}}">
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view hidden="{{clientId == 0}}" class="textarea-wrap">
+              <input type="text" bindblur="inputFn" value='{{inputVal}}' placeholder="请输入您的评论..." />
+              <button type="primary" data-id="{{item.id}}" bindtap='fieldSendFn'>发表</button>
+            </view>
+          </view>
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view class="prompt" hidden="{{commentData != 0}}">暂无评论</view>
+          </view>
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view class="msges-list">
+              <block wx:for="{{commentData}}" wx:key="comVal">
+                <view class="msg-wrap">
+                  <view class="head-img">
+                    <image wx:if="{{item.clientHeadImg == ''}}" src="../../images/avatar.png"></image>
+                    <image wx:else src="{{imgPath + item.clientHeadImg}}"></image>
+                  </view>
+                  <view class="msg-info">
+                    <view class="name">{{item.webName}} {{item.addTimeStr}}</view>
+                    <view class="msg">{{item.content}}</view>
+                    <view class="bus-info" wx:for="{{commentData[index].infoComments}}" wx:for-item="comItem" wx:key="">
+                      <view class="business">{{comItem.webName}}商家 {{comItem.addTime}}</view>
+                      <view class="business-con">{{comItem.content}}</view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+            
+          </view>
+        </view>
+      </view>
+      <!-- 田间表现属性 -->
+      
+    </view>
+    <!-- 田间表现-end -->
+    <!-- 种植技术描述 -->
+    <view class="farm-log">
+      <view hidden='{{logIdx != 2}}'>
+        <view class='prompt' hidden="{{plantData != ''}}">暂无种植技术信息</view>
+      </view>
+      <view class="log-desc" wx:for="{{plantData}}" wx:key="plant" hidden="{{logIdx != 2}}">
+        <view class="farm-tit">
+          <text>{{item.addTime}}</text>
+           <!-- <text hidden="{{logIdx != 2}}">作物开花</text>  -->
+        </view>
+        <view class="log-row" wx:for="{{plantData[index].infoValue}}" wx:for-item="Vitem" wx:key="value">
+          <view class="log-key">{{Vitem.paramName}}</view>
+          <view class="log-val">{{Vitem.paramValue}}</view>
+        </view>
+        <view class="log-imgs">
+          <image class="log-img" data-id="{{plantData[index].plotsInfoImgs[idx]}}" wx:for="{{plantData[index].plotsInfoImgs}}" wx:for-item="VitemImg" wx:key="imgs" wx:for-index="idx" mode="aspectFit" bindtap="previewImageFn" src="{{imgPath + VitemImg}}" bindtap="imgzhongFn"></image>
+        </view>
+        <view class="logs-other">
+          <text class="praise" bindtap='fieldisZan' hidden="{{clientId == 0}}" data-id="{{item.id}}">点赞({{item.clickNum}})</text>
+          <text class="comment" bindtap="msgesHideFn" data-id="{{item.id}}">评论({{item.count}})</text>
+        </view>
+        
+        <view class="hide {{currentItem == item.id?'show':'hide'}}">
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view hidden="{{clientId == 0}}" class="textarea-wrap">
+              <input type="text" bindblur="inputFn" value='{{inputVal}}' placeholder="请输入您的评论..." />
+              <button type="primary" data-id="{{item.id}}" bindtap='fieldSendFn'>发表</button>
+            </view>
+          </view>
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view class="{{isComment==true ? 'show':'hide'}}">
+            <view class="prompt" hidden="{{commentData != 0}}">暂无评论</view>
+          </view>
+          </view>
+          <view class="{{isComment==true ? 'show':'hide'}}">
+            <view class="msges-list">
+              <block wx:for="{{commentData}}" wx:key="comVal">
+                <view class="msg-wrap">
+                  <view class="head-img">
+                    <image wx:if="{{item.clientHeadImg == ''}}" src="../../images/avatar.png"></image>
+                    <image wx:else src="{{imgPath + item.clientHeadImg}}"></image>
+                  </view>
+                  <view class="msg-info">
+                    <view class="name">{{item.webName}} {{item.addTimeStr}}</view>
+                    <view class="msg">{{item.content}}</view>
+                    <view class="bus-info" wx:for="{{commentData[index].infoComments}}" wx:for-item="comItem">
+                      <view class="business">{{comItem.webName}}商家 {{comItem.addTime}}</view>
+                      <view class="business-con">{{comItem.content}}</view>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 示范日志-end -->
+
+  <!-- 用户留言-start -->
+  <view class="msges-wrap" hidden="{{swichIdx != 3}}">
+      
+    <view class="leave-word" hidden="{{clientId == 0}}">
+      <textarea maxlength="200" placeholder="请留下您宝贵的意见..." placeholder-style="color:#999;" bindblur="textblurFn" value="{{textValue}}"></textarea>
+      <text>200字</text>
+      <button type="primary" bindtap='sendFn'>发表</button>
+    </view>
+    <view class="prompt" hidden="{{guestBookData != 0}}">暂无留言</view>  
+    <!-- 留言列表组件 -->
+    <view class="msges-list">
+      <block wx:for="{{guestBookData}}" wx:key="i" >
+        <view class="msg-wrap">
+          <view class="head-img">
+            <image wx:if="{{item.clientHeadImg == ''}}" src="../../images/avatar.png"></image>
+            <image wx:else src="{{imgPath + item.clientHeadImg}}"></image>
+          </view>
+          <view class="msg-info">
+            <view class="name">{{item.webName}} {{item.addTimeStr}}</view>
+            <view class="msg">{{item.content}}</view>
+            <view class="bus-info" wx:for="{{guestBookData[index].infoComments}}" wx:for-item="comItem" wx:key="desimg">
+              <view class="business">{{comItem.webName}}商家 {{comItem.addTime}}</view>
+              <view class="business-con">{{comItem.content}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- <template is="msges" data="{{msgData}}" /> -->
+    <!-- 留言列表组件 -->
+  </view>
+  <!-- 用户留言-end -->
+
+
+
+</view>

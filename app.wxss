@@ -1,0 +1,85 @@
+/* page {
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  position: relative;
+} */
+/**app.wxss**/
+
+page {
+  /* background-color: #f5f5f5; */
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+   position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ellipsis2{
+    display: -webkit-box;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+/* 商品数量运算-start */
+.operation {
+  overflow: hidden;
+  float: right;
+  font-size: 30rpx;
+}
+
+.operation .decr-btn, .operation .incr-btn {
+  float: left;
+  width: 52rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  border-color: #d2d2d2;
+  padding: 0;
+  border: 1rpx solid #d2d2d2;
+  border-radius: 10rpx;
+}
+
+.operation .decr-btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.operation .incr-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.operation .operation-result {
+  display: block;
+  float: left;
+  width: 110rpx;
+  text-align: center;
+  line-height: 120rpx;
+  height: 56rpx;
+  border: 1rpx solid #d2d2d2;
+  border-left: none;
+  border-right: none;
+}
+/* 商品数量运算-end */
+.errorMsg {
+  background-color: #f60;
+  text-align: center;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  color: #fff;
+}

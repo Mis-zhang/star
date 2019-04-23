@@ -1,0 +1,204 @@
+/*优惠劵的选择*/
+
+.orderdetail {
+  width: 100%;
+  height: auto;
+}
+
+page {
+  background: #fff;
+}
+
+.coupon-choose {
+  width: 100%;
+  height: 200rpx;
+  margin: 20rpx 0rpx;
+  background-color: #fff;
+}
+
+.coupons-con {
+  width: 100%;
+  float: left;
+  height: 100%;
+}
+
+.block {
+  height: 100%;
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.coupons {
+  width: 620rpx;
+  height: 210rpx;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXcAAACJCAYAAADXL3gjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2NDQ4NkZFNDQxRTExMUU3OEQ4QjkxRDM1NjA3MDg0RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2NDQ4NkZFNTQxRTExMUU3OEQ4QjkxRDM1NjA3MDg0RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjY0NDg2RkUyNDFFMTExRTc4RDhCOTFEMzU2MDcwODRGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjY0NDg2RkUzNDFFMTExRTc4RDhCOTFEMzU2MDcwODRGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+eSzhzAAABkVJREFUeNrs3VuIVWUY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') no-repeat center center;
+  background-size: 620rpx 210rpx;
+  text-align: left;
+  color: #e4383b;
+  float: left;
+  overflow: hidden;
+  margin-left: 85rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+.invalid {
+  width: 600rpx;
+  height: 100rpx;
+  background: #ccc;
+  margin-left: 85rpx;
+  margin-top: 30rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  margin-bottom: 20rpx;
+  font-weight: 600;
+  display: none;
+}
+
+.discount {
+  width: 280rpx;
+  height: 100%;
+  float: left;
+  text-align: center;
+}
+
+.discount text {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #fff;
+}
+
+.discount .quota {
+  font-size: 120rpx;
+  font-weight: 700;
+  color: #fff;
+  line-height: 200rpx;
+}
+
+.draw {
+  width: 100rpx;
+  height: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  float: left;
+  font-weight: 600;
+}
+
+.draw1 {
+  width: 100rpx;
+  height: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  float: left;
+  font-weight: 600;
+}
+
+.draw1 text {
+  display: block;
+  width: 60rpx;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 25rpx;
+  text-align: right;
+  margin-left:18rpx;
+}
+
+.draw text {
+  display: block;
+  width: 60rpx;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 25rpx;
+  text-align: right;
+  margin-left:18rpx;
+}
+
+.To {
+  display: block;
+  width: 25rpx;
+  height: 25rpx;
+  text-align: center;
+  line-height: 20rpx;
+  font-size: 25rpx;
+  color: #fff;
+  margin-left: 175rpx;
+}
+
+.term {
+  width: 235rpx;
+  height: 200rpx;
+  float: left;
+  text-align: left;
+}
+
+.term .date {
+  font-size: 30rpx;
+  color: #fff;
+  display: block;
+  width: 100%;
+  height: 66rpx;
+  line-height: 66rpx;
+}
+
+.term .full {
+  font-size: 30rpx;
+  color: #e50338;
+  display: block;
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #fff362;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.term .time {
+  font-size: 30rpx;
+  color: #fff;
+  display: block;
+  width: 100%;
+  font-weight: 600;
+  line-height: 18rpx;
+}
+
+.coupons .requirement {
+  display: block;
+  font-size: 22rpx;
+  color: #e05d32;
+}
+
+.order-tabBar {
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #333;
+  font-size: 30rpx;
+  background: #fff;
+  margin-bottom: 30rpx;
+}
+
+.order-tabBar text {
+  flex: 3;
+  border-bottom: 1px solid #f5f5f5;
+  text-align: center;
+}
+
+.order-tabBar .red {
+  border-bottom: 1px solid #e4383b;
+  color: #e4383b;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

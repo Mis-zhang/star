@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/register/register",
+    "pages/shoppingcar/shoppingcar",
+    "pages/orderConfirm/orderConfirm",
+    "pages/orderList/orderList",
+    "pages/orderDetail/orderDetail",
+    "pages/coupons/coupons",
+    "pages/addrEdit/addrEdit",
+    "pages/addrOpt/addrOpt",
+    "pages/center/center",
+    "pages/search/search",
+    "pages/shopDetail/shopDetail",
+    "pages/bargain/bargain",
+    "pages/facilitator/facilitator",
+    "pages/modelField/modelField",
+    "pages/kefu/kefu",
+    "pages/orderDf/orderDf",
+    "pages/refundList/refundList",
+    "pages/shop/shop",
+    "pages/fieldList/fieldList",
+    "pages/fieldDetail/fieldDetail",
+    "pages/star/index",
+    "pages/publish/index",
+    "pages/starreview/index"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#22292c",
+    "navigationBarTitleText": "",
+    "backgroundColor": "#efeff4",
+    "navigationBarTextStyle": "white"
+  },
+  "navigateToMiniProgramAppIdList": [],
+  "tabBar": {
+    "color": "#7f8389",
+    "selectedColor": "#009966",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "selectedIconPath": "images/shouye.png",
+        "iconPath": "images/shouye_defalut.png"
+      },
+      {
+        "pagePath": "pages/modelField/modelField",
+        "text": "分类",
+        "selectedIconPath": "images/fenlei.png",
+        "iconPath": "images/fenlei_defalut.png"
+      },
+      {
+        "pagePath": "pages/shoppingcar/shoppingcar",
+        "text": "购物车",
+        "selectedIconPath": "images/gouwu.png",
+        "iconPath": "images/gouwu_defalut.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "企业",
+        "selectedIconPath": "images/qiye.png",
+        "iconPath": "images/qiye_defalut.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "selectedIconPath": "images/wode.png",
+        "iconPath": "images/wode_defalut.png"
+      }
+    ]
+  }
+}

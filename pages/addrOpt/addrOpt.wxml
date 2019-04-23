@@ -1,0 +1,12 @@
+<view class="container">
+  <radio-group class="radio-group">
+    <view class="addr-list" wx:for="{{addrData}}" wx:key="i">
+      <view class="adressChoose" bindtap="choiceFn" data-index="{{index}}">
+        <text class="consignee" data-consignee="item.consignee">{{item.consignee}} {{item.mob}}</text>
+        <text class="ellipsis"><text class="isDefault">{{item.isDefault ? '[默认]' : ''}}</text>   {{item.regionName}}{{item.address}}</text>
+      </view>
+      <text class="edit-addr" data-region="{{item.id}}" bindtap="editorFn"></text>
+    </view>
+  </radio-group>
+  <button class="newedit-btn" bindtap="creatAddrFn">添加新地址</button>
+</view>

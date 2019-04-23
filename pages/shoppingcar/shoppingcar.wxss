@@ -1,0 +1,126 @@
+/* pages/shoppingcar/shoppingcar.wxss */
+
+.operation {
+  float: left;
+}
+
+.container {
+  padding-bottom: 130rpx;
+}
+
+.bought {
+  width: 180rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  float: left;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  color:#b2b2b2;
+}
+
+.shopping-list {
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 30rpx 0 30rpx 30rpx;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.shoppingNone {
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx;
+  text-align: center;
+  color: #999;
+  font-size: 38rpx;
+}
+.shoppinghide {
+  display: none;
+}
+.shoppingshow{
+  display: block;
+}
+
+.shopping-list image {
+  float: left;
+  width: 140rpx;
+  height: 170rpx;
+}
+
+.info-wrap {
+  padding: 0 30rpx;
+  width: 380rpx;
+  overflow: hidden;
+  flex: 1;
+}
+
+.info-wrap .tit {
+  display: block;
+  font-size: 30rpx;
+  color: #000;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.price-info {
+  padding: 25rpx 0 32rpx;
+  overflow: hidden;
+}
+
+.price-info text {
+  font-size: 26rpx;
+  color: #b2b2b2;
+  float: left;
+}
+
+.price-info .price {
+  font-size: 30rpx;
+  color: #e4383b;
+  float: right;
+}
+
+.del-order {
+  display: block;
+  width: 90rpx;
+  border-left: 1rpx solid #ddd;
+  margin: -30rpx 0;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAoCAYAAACb3CikAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyMzlCRTFDQ0Y3MkMxMUU2QjZFNThEMDI1N0YwQkNCQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMzlCRTFDREY3MkMxMUU2QjZFNThEMDI1N0YwQkNCQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjIzOUJFMUNBRjcyQzExRTZCNkU1OEQwMjU3RjBCQ0JCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIzOUJFMUNCRjcyQzExRTZCNkU1OEQwMjU3RjBCQ0JCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+D2pjuQAAAfZJREFUeNpi/N4/kYEMIADEk4BYA8r/D8SMUPowEJdC2QQBR0EemGYhwxEgC7cAsTUOeTMg5gLiLFIMZSLDIex4HAEDtqQaSo5DfgDxZwJqXpJqKAvUMXVAbEOkHmZo0OMDxkC8hyhfTZj0GxTVIIesBOIQBuoCUGJ2JkG9Byg0/BkGHnwHOYR1EDiEExQ1EUDMC8R/ic37VAagNPcTlkYGDGAr0DKhJeVfeoYGMNfsBzpmA7JDQMWy4gAEigQQb0Au0O4NUOw8I7dkpQkgVOk9BQUbEEsBcSAONXuB+BoQOwKxDg41C0E5A4ijgJiHVIc8AWJVaN0CAtlAPAWLBQlI/JPQ2hcG/gCxCxAfhPJBbY5L0CxLdKW3F8kRILAIi5peNP4ENP49JEcwQEPuEqm17080vhCOwggf/zcWPd9IdQgrAUtAgI0An5kIcxkGVa4ZdcioQ0YdMuqQUYeMOmQgHfIHjf+PCDXk6CHoEEY0/jssar4S09agtBmAPjrggkVNPBo/Go2vgNZFEQFiXVLbrKDO1jEg7oMa2I1FTSXUhyegIwoBaPKg4YvzQFwAxL+AuA3UuSPkEGytKUsgXk0gqEsIyPMD8XxC6RQ5angHKMPwojtk0wA5ZCt61DQxQAbqnKHR9I/GxQaohb8Y2AFfCxIACDAA2w1WAkS9YWMAAAAASUVORK5CYII=) no-repeat center center;
+  background-size: 34rpx 40rpx;
+}
+
+.footBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  right: 0;
+  height: 110rpx;
+  background-color: #fff;
+  display: flex;
+  line-height: 110rpx;
+  font-size: 32rpx;
+  border-top: 1rpx solid #ddd;
+}
+
+.footBar .totail-price {
+  flex: 2;
+  color: #353535;
+  text-align: left;
+  padding-left: 30rpx;
+}
+
+.footBar .settlement-btn {
+  flex: 1;
+  text-align: center;
+  line-height: 110rpx;
+  font-size: 40rpx;
+  border-radius: 0;
+}
+
+button::after {
+  border: none;
+}

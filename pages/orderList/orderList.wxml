@@ -1,0 +1,298 @@
+<view class="container">
+  <view class="tab-nav">
+    <scroll-view scroll-x="true" class="tab-scroll" id="{{}}">
+      <view class="{{dataIndex == index?'page pgselected':'page'}}" data-status="{{index}}" wx:for="{{orderNav}}" wx:key="" bindtap='tabToggleFn'>{{item}}</view>
+    </scroll-view>
+  </view>
+  <view class='order-nav' hidden='isOpenPayNav'>
+    <scroll-view scroll-x="true" class="tab-scroll">
+    <view wx:for="{{orderNav}}" wx:key='oNavKey'>
+      <text bindtap='orderClickFn' data-index='{{index}}' class='{{dataIndex == index?"order-nav-red":""}}'>{{item}}</text>
+    </view>
+    </scroll-view>
+  </view>
+
+  <!--支持线上时-->
+  <view hidden="{{!isDisplay}}" class="order-hint">
+    <view class="nolist" hidden="{{isnone}}">您暂时还没有订单！</view>
+
+    <!--未支付-->
+    <view class="order-paid" hidden="{{westatus}}">
+      <view class="order-list" wx:for="{{listData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status">待付款</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" wx:key="i" wx:for-item="list" bindtap="orderDetailFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">
+
+          <!--<image src="{{imgPath}}{{item.img?item.img:item.defauliImg}}"></image>-->
+          <image src="{{imgPath+list.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{list.brand}}{{list.itemName}}</text>
+            <text class="order-pro">由{{item.saleName}}提供发货和售后</text>
+            <view class="peice-wrap">
+              <text class="weight">{{list.norm}}</text>
+              <text class="num">x{{list.qty}}</text>
+              <text class="price">¥{{list.price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="order-work">
+          <text class="conpousTip" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-cancle" bindtap="cancleFn" data-orderId="{{item.id}}">取消订单</button>
+          <button class="order-payment" bindtap="placeOrderFn" data-orderId="{{item.id}}">立即支付</button>
+        </view>
+      </view>
+    </view>
+
+    <!--待发货-->
+    <view class="order-unpaid" hidden="{{unstatus}}">
+      <view class="order-list" wx:for="{{unListData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">{{item.skumDfh}}</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" bindtap="orderDetailFn" wx:key="i" wx:for-item="unList">
+          <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+            <text class="order-pro ellipsis2">由 {{item.saleName}} 提供发货和售后</text>
+            <view class="peice-wrap">
+              <text class="weight">{{unList.norm}}</text>
+              <text class="num">x{{unList.qty}}</text>
+              <text class="price">¥{{unList.price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="order-work" hidden="{{isMoney}}">
+          <text class="conpousTip conpousTiped" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-payment" bindtap="tuikuan" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">立即退款</button>
+        </view>
+      </view>
+    </view>
+
+    <!--待收货-->
+    <view class="order-unpaid" hidden="{{noshouhuo}}">
+      <view class="order-list" wx:for="{{unlistreceived}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">配送中</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" bindtap="orderDetailFn" wx:key="i" wx:for-item="unList">
+          <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+            <text class="order-pro ellipsis2">由 {{item.saleName}} 提供发货和售后</text>
+            <view class="peice-wrap">
+              <text class="weight">{{unList.norm}}</text>
+              <text class="num">x{{unList.qty}}</text>
+              <text class="price">¥{{unList.price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="order-work" hidden="{{isMoney}}">
+          <text class="conpousTip conpousTiped" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-payment" bindtap="qianshouFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" wx:if="{{item.status>=40 && item.status<=99}}">立即签收</button>
+        </view>
+      </view>
+    </view>
+
+    <!--已完成-->
+    <view class="order-unpaid" hidden="{{wancheng}}">
+
+
+
+
+
+
+
+
+      <view class="order-list" wx:for="{{unlistreceived}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">已完成</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" bindtap="orderDetailFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}"   wx:key="i" wx:for-item="unList">
+          <!-- <view class="hahah" bindtap="orderDetailFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}"> -->
+            <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+            <view class="order-info">
+              <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+              <text class="order-pro ellipsis2">由 {{item.saleName}} 提供发货和售后</text>
+              <view class="peice-wrap">
+                <text class="weight">{{unList.norm}}</text>
+                <text class="num">x{{unList.qty}}</text>
+                <text class="price">¥{{unList.price}}</text>
+              </view>
+            </view>
+          <!-- </view> -->
+          <!-- <view class="star_detail" data-itemid="{{unList.itemId}}" data-orderId="{{item.id}}" data-brand="{{unList.brand}}" data-itemname="{{unList.itemName}}" data-norm="{{unList.norm}}" bindtap="getAssess">评价</view> -->
+        </view>
+        <!-- <view class="order-work">
+          <text class="conpousTip" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-payment" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getAssess">评价</button>
+        </view> -->
+        <block wx:if="{{item.commentStatus == 2}}">
+          
+        </block>
+        <block wx:else>
+           <view class="order-work" wx:if="{{item.status == 100}}">
+          <button class="order-payment" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getAssess" wx:if="{{item.commentStatus == 0}}">评价</button>
+          <button class="order-payment" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getReview" wx:elif="{{item.commentStatus == 1}}">追加评价</button>
+        </view>
+        </block>
+        <!-- <view class="star_add">
+          <view class="star_detail" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getAssess">评价</view> 
+        </view> -->
+      </view>
+
+
+
+
+
+
+
+
+    </view>
+
+    <!--全部订单-->
+    <view class="order-unpaid" hidden="{{allstatus}}">
+      <view class="order-list" wx:for="{{allListData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">{{item.mkstatus}}</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" bindtap="orderDetailFn" wx:key="i" wx:for-item="unList">
+          <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+            <text class="order-pro ellipsis2">由 {{item.saleName}} 提供发货和售后</text>
+            <view class="peice-wrap">
+              <text class="weight">{{unList.norm}}</text>
+              <text class="num">x{{unList.qty}}</text>
+              <text class="price">¥{{unList.price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="order-work" hidden="{{item.ispo}}">
+          <text class="conpousTip conpousTiped" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-payment" bindtap="tuikuan" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" wx:if="{{item.status==30 || item.status==31}}">立即退款</button>
+          <button class="order-payment" bindtap="qianshouFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}" wx:if="{{item.status>=40 && item.status<=99}}">立即签收</button>
+        </view>
+        <view class="order-work" hidden="{{!item.ispo}}">
+          <text class="conpousTip" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-cancle" bindtap="cancleFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">取消订单</button>
+          <button class="order-payment" bindtap="placeOrderFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">立即支付</button>
+        </view>
+        <block wx:if="{{item.commentStatus == 2}}">
+          
+        </block>
+        <block wx:else>
+           <view class="order-work" wx:if="{{item.status == 100}}">
+          <button class="order-payment" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getAssess" wx:if="{{item.commentStatus == 0}}">评价</button>
+          <button class="order-payment" data-orderId="{{item.id}}" data-items="{{item.items}}" bindtap="getReview" wx:elif="{{item.commentStatus == 1}}">追加评价</button>
+        </view>
+        </block>
+       
+      </view>
+    </view>
+
+    <!--退款订单-->
+    <!-- refundOrder -->
+    <view class="order-unpaid" hidden="{{refundOrder}}">
+      <view class="order-list" wx:for="{{refundOrderData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">{{item.mkstatus}}</text>
+          <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+          <view class="order-price"> 合计：
+            <text class="totail-price">¥{{item.amount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.item}}" data-orderId="{{item.orderId}}" data-statuscode="{{item.status}}" bindtap="orderDetailFn" wx:key="i" wx:for-item="unList">
+          <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+            <text class="order-pro ellipsis2">由 {{item.companyName}} 提供发货和售后</text>
+          </view>
+        </view>
+        <view class="order-work">
+          <text class="conpousTip conpousTiped" wx:if="{{item.refundTime}}">退款时间：{{item.refundTime}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--支持线下时-->
+  <view hidden="{{isDisplay}}" class='no-pay'>
+    <view class="nolist" hidden="{{isnone}}">您暂时还没有订单！</view>
+    <view class="order-pay" wx:for="{{listData}}" wx:key="i" data-statuscode="{{item.status}}">
+      <view class="title">
+       <text hidden="{{item.salemanCode == '' || item.salemanCode == null ||item.salemanCode == undefined}}" class="order-yhm">优惠码</text>
+        <view class="total">¥{{item.retailPayAmount}}</view>
+        <view class="ordermoq">共{{item.itemQty}}件 合计:</view>
+      </view>
+      <view class="shop-detail" wx:for="{{item.items}}" wx:key="i" wx:for-item="list" bindtap="orderFn" data-orderId="{{item.id}}">
+        <view class="shop-img">
+
+          <!--<image src="{{imgPath}}{{item.img?item.img:item.defauliImg}}" />-->
+          <image src="{{imgPath+list.img}}" mode="aspectFit"></image>
+        </view>
+        <view class="shop-content">
+          <text class="shop-name ellipsis2">{{list.brand}}{{list.itemName}}</text>
+          <text class="company-name ellipsis2">由 {{item.saleName}} 提供发货和售后服务</text>
+          <view class="shopdetail">
+            <text class="spec ellipsis">{{list.norm}} x{{list.qty}}</text>
+            <text class="shopprice">¥{{list.price}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="order-work">
+        <text class="conpousTip" hidden='{{item.couponDiscount > 0? false : true}}'>已使用¥{{item.couponDiscount}}优惠券</text>
+        <button hidden='{{item.status == -1? true : false}}' class="order-cancle" bindtap="cancleFn" data-orderId="{{item.id}}">取消订单</button>
+        <text class='order-pay-cancel' hidden='{{item.status == -1? false : true}}'>已取消</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='tuibox' wx:if="{{chooseSize}}">
+    <radio-group class="tuikuan" bindchange="checkboxChange" wx:if="{{chooseSize}}" animation='{{animationData}}'>
+      <label class="checkbox">
+        <radio value="1" checked="{{checked}}" />缺货
+      </label>
+      <label class="checkbox">
+        <radio value="2" checked="{{checked}}" />未按约定时间发货
+      </label>
+      <label class="checkbox">
+        <radio value="3" checked="{{checked}}" />协商一致退款
+      </label>
+      <label class="checkbox">
+        <radio value="4" checked="{{checked}}" />拍错/多拍/不想要
+      </label>
+      <label class="checkbox">
+        <radio value="5" checked="{{checked}}" />其他
+      </label>
+      <view class="checkbtn">
+        <button class='tuiButton left' bindtap="quxiaoFn">取消</button>
+        <button class='tuiButton right' bindtap='quedingFn'>确定</button>
+      </view>
+    </radio-group>
+  </view>
+</view>
+
+<scroll-view scroll-x="true" style="white-space: nowrap;width: 100%;display: flex">
+
+</scroll-view>

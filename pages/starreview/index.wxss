@@ -1,0 +1,225 @@
+/* pages/review/index.wxss *//* pages/publish/index.wxss */
+.publish {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 110rpx;
+  z-index: 666;
+}
+.publish_height {
+  height: 100%;
+}
+.publish .publish_top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 50rpx;
+  background: #ffffff;
+}
+.publish .publish_top .publish_goods {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #eeeeee;
+}
+.publish .publish_top .publish_goods .publish_title {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #333333;
+  padding-left: 35rpx;
+}
+.publish .publish_top .publish_goods .publish_breed {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #333333;
+  padding-left: 18rpx;
+}
+.publish .publish_top .publish_goods .publish_norm {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #aaaaaa;
+  padding-left: 30rpx;
+}
+.publish .publish_top .publish_content {
+  width: 100%;
+  /* padding: 30rpx 0rpx; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.publish_content .publish_star {
+  width: 700rpx;
+  height: 35rpx;
+  padding: 0rpx 25rpx;
+  display: flex;
+  flex-direction: row;
+}
+.publish_content .publish_star .publish_star_title {
+  height: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #333333;
+  padding-left: 10rpx;
+}
+.publish_content .publish_star .publish_star_num {
+  height: 35rpx;
+  width: 195rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding-left: 32rpx;
+}
+.publish_content .publish_star .publish_star_num .publish_star_icon {
+  width: 35rpx;
+  height: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACOklEQVRYR8WXQVLbQBBF/xfsww3AJ8CcIOYEgRMElglyBcnZx+xjyVUyxTacAHKCyCeIOAHKDdimAurUyMJBtmY0smWijRZqzX9qdf/pIf7zxXX0JYjGECfh4OzbquusDCBfoyM4vMmFyQN6Z8kqECsBSBjuQLbvAe4UojF99/D1AFTqwU8lQcohvX7cFKJxBiS82oM83VcIJfTdg80DBJNbAO8qhYSnTQuyUQYkjHoQ/jB8ZUrf7TTJQjOAIIoBvjUKCDwO3LEthDWAxdcXmvIAPnboeQ82EEaAouD2QXYhcgJgz2ZRADHIGMIY/H1ngpkDLIj1AOm+6HNLXW1YCpEEjpMoKPofp8+ROYAEE2Wl79dVafB+CvJYueczgDR4uZ1QkQsO+sMCoMLZ2pHRr1LsH/9q4DV/wwvDKnWBjKIE5P5GP37BLcsAapfLtlULbQrimr6r2nl+LflA3o7ZUwLiTcuZ+E7fPVpcs9KIJLzsIpO4NQiROziPvSpD0jphaeJZJxWCX3D+dHVuaLZim82nDq7od11YDcCkDYOq/PclK9bRSdAGgEzp93uNM5AXosjPugxbPDcOKfoirJ9+LLRnIfRdrY4eYDQ5BxFaq5gCudWh9yGtCjEAREOQX/TryhTEMH8u6m4Y1Qwjux5AuznNhBfPALORTQOSyTE/99U0vXQZAJa26GuQ47ojWG5g5BjE7lzNMKgailB1QaZOQCm4NdT9Q20Ljy5PgOw8f66x4bxAWymyNRb5C7o87CHyxiKbAAAAAElFTkSuQmCC');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.publish_content .publish_star .publish_star_num .publish_star_icon_active {
+  width: 35rpx;
+  height: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNElEQVRYR8VX7VHcMBDdXRcAHSQa6T9HBTkqCFQQqICkgpAKQglQQaCC3FWQ4780Mh3QgLWZ9dg3vsOSZeMD/fNI3ve0H29XCB+88C34zrlbZt4YY+6m2plMwFp7joh/BJiITpVSmykkJhHw3h+HEDwAHAsoM6+MMWfvRkBcDwDXXUAiOlNKrcaSGO0B7/3n5vb7WBut9enBCVhrHxDxax8QM1+NTchRHvDeL0MIfxO3LLXWaowXRhGw1q4Q8csAwA+tteRI1somkHH7FvCFiJRS6iWHQZKAJBwAnIQQFgBwCQDyPbikLBFxRURSFU8pMlsCXTBmXiKigNZ1PsMqRTERcSOklFLr1mZNwFp7h4jfZgDKNVES0YWoZ03AOce5f8547pfW+qYl8ErZZgTqNdX2j20OvGcYuoK1UwXOOeloJ4e8/b5a7hBoupyUzkFIMPO9MUbKebte6UDTbMQTR3N6gpkfjTHn+zZ7hch7vwghiCfmIvFERMs+QYoqYXfieaMnnoloEVPDpBRnNp8hfnW9xw4lCcwhULHY70hxjN1MBNbGmOVoDzSJ+G/Ivxn7ySElGoIR/X+Qg9Y6ihPdcM59B4Dfg9YzDjQDStl3NEVAMvdnzD4zr4uiqLO7qqqb1KiWGtlTOtA7I7TA+28ACVmMCDNfGGMexnpgp0WLjhdFcTv0BGsETP791AGMDqqpJFxUVSWGSnG1Uqo3hrEQWWsvEVHySN6OvTIse9lTcUauTTryHxlaDTA2+Da1AAAAAElFTkSuQmCC');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.publish_content .publish_star .publish_star_tips {
+  height: 35rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 27rpx;
+  font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #aaaaaa;
+}
+.publish_content .publish_write {
+  width: 650rpx;
+  padding: 30rpx 25rpx;
+  background: #f5f5f5;
+  border-radius: 6rpx;
+  margin-top: 41rpx;
+}
+.publish_content .publish_write .publish_write_text {
+  width: 100%;
+}
+textarea {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333333;
+  min-height: 100rpx;
+}
+.texterea {
+  color: #aaaaaa;
+  font-size: 28rpx;
+}
+.publish_content .publish_write .publish_write_creame {
+  width:100%;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+}
+.publish_write_creame .add {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.publish_write_creame .add .add_icon {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 28rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  background: #ffffff;
+}
+.publish_write_creame .add .add_icon:nth-child(4),
+.publish_write_creame .add .add_icon:nth-child(8)
+ {
+  margin-right: 0rpx;
+}
+.publish_write_creame .add .add_icon .add_icon_img {
+  width: 140rpx;
+  height: 140rpx;
+}
+.add_icon_active {
+  position: absolute;
+  right: -10rpx;
+  top: -10rpx;
+  width: 38rpx;
+  height: 38rpx;
+  z-index: 9999;
+  /* background: #ffffff; */
+}
+ .photo {
+  width: 137rpx !important;
+  height: 137rpx !important;
+  border: 1rpx dashed #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ .photo .photo_icon {
+  width: 62rpx;
+  height: 53rpx;
+}
+.photo .photo_icon .photo_icon_img {
+  width: 62rpx;
+  height: 53rpx;
+}
+ .photo .photo_title {
+  width: 100%;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #aaaaaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.submit {
+  width: 100%;
+  height: 110rpx;
+  font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+  color: #ffffff;
+  background: #e03836;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+}

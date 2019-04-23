@@ -1,0 +1,27 @@
+<!-- <view class='content'>
+  <view class='img-box'>
+    <view class='img-list'>
+      <block wx:for="{{detailPics}}" wx:key="index">
+        <view class='img-item'>
+          <image src='{{item}}' bindlongpress="bindlongpressimg" data-id='{{index}}'></image>
+        </view>
+      </block>
+      <view class='chooseimg' bindtap='uploadDetailImage'>
+        <view class="weui-uploader__input-box"></view>
+      </view>
+    </view>
+    <view class='tips'>长按对应的图片即可删除</view>
+  </view>
+</view> -->
+<view class="add">
+  <view class="add_icon" wx:for="{{detailPics}}" wx:key="i" wx:for-item="item_img" wx:for-index="index_img">
+    <image class="add_icon_img" src="{{item_img}}" data-id="{{index_img}}" mode="aspectFit"></image>
+    <image class="add_icon_active" src="../../images/del.png" mode="aspectFit" data-index="{{index_img}}" bindtap="delImage"></image>
+  </view>
+  <view class="add_icon photo" bindtap="uploadDetailImage" wx:if="{{showAdd}}">
+    <view class="photo_icon">
+      <image class="photo_icon_img" src="../../images/creame.png" mode="aspectFit"></image>
+    </view>
+    <view class="photo_title">添加图片</view>
+  </view>
+</view>

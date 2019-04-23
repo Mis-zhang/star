@@ -1,0 +1,6 @@
+<view class='container'>
+  <import src="../../wxParse/wxParse.wxml" />
+  <view calss="box" style='padding:20rpx;'>
+    <template is="wxParse" data="{{wxParseData:contentImg.nodes}}" />
+  </view>
+</view>

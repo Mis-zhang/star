@@ -1,0 +1,240 @@
+<!-- pages/shopDetail/shopDetail.wxml -->
+<wxs module="dateUtil" src="../../utils/time.wxs"></wxs>
+<view class="container">
+  <view class="mask" style="width:{{screenwidth}};height:{{screenheight}}" hidden="{{isMask}}"></view>
+  <!-- 轮播 -->
+  <view class='banner-view'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="3000" duration="1000" class="banner" circular="true">
+      <block wx:for="{{img}}" wx:key="i">
+        <swiper-item>
+          <image src="{{item}}" mode="selector" />
+        </swiper-item> 
+                   dfgdfg
+      </block>
+    </swiper>
+  </view>
+  <view class='field-entrance' hidden='{{plotCount == 0? true : false}}'>
+    <navigator target="miniProgram" open-type="navigate" app-id="{{field? '':fieldAppId}}" path="{{fieldPath}}" extra-data="{{fieldData}}" version="release" bindtap="{{field?'backField':''}}">
+      <view class='field-jump'>
+        <image class='img' src='../../images/field-location.png'></image>
+        <view class='sft'>示范田</view>
+        <view class='num'>{{plotCount}}</view>
+        <text class='see'>→点击查看</text>
+      </view>
+    </navigator>
+  </view>
+  <!-- 商品详情 -->
+  <view class="shopDetail">
+    <view class="shop-detail">
+      <text class="shop-name ellipsis2">【{{goodsData.brand}}】{{goodsData.onlineTitle}}</text>
+      <text class="company-name ellipsis2">由 {{goodsData.companyName}} 提供发货和售后服务</text>
+    </view>
+    <view class="bargin" bindtap="bargainFn"></view>
+    <view class="shop-price" hidden="{{!isresolve}}">
+      <view class="{{shopPromotionPrice? 'price-info p-top':'price-info'}}">
+        <view style='float:left' hidden='{{!isPrice}}'>
+          <text class="pri-txt">零售价：</text>
+          ¥
+          <text class="{{shopPromotionPrice? 'through':''}}">{{shopprice}}</text>
+          /{{shoppingData.units}}
+        </view>
+        <view style='float:left' hidden='{{isPrice}}'>
+          <text class="pri-txt">零售价：</text>
+          <text class="{{shopPromotionPrice? 'through':''}}">
+            ¥{{shopprice}}/{{shoppingData.units}}
+          </text>
+        </view>
+      </view>
+      <view class='price-info' hidden='{{isPromotion}}'>
+        <text class="pri-txt">促销价：</text>
+        ¥
+        <text>{{shopPromotionPrice}}</text>
+        /{{shoppingData.units}}
+      </view>
+    </view>
+    <view class="shop-price" hidden="{{isresolve}}">价格待定</view>
+    <view></view>
+  </view>
+  <!-- 规格 -->
+  <view class="shopDetail-ms guige">
+    <text class="eqwith">规格</text>
+    <view class="rule">
+      <text class="{{currentid==item.id ? 'choose':''}}" wx:for="{{goodsData.itemSkus}}" wx:key="i" data-id="{{item.id}}" bindtap="specFn">
+        {{item.norm}}
+      </text>
+    </view>
+  </view>
+  <!-- 数量 -->
+  <view class="shopDetail-ms">
+    <text class="eqwith">数量</text>
+    <view class="operation">
+      <text class="decr-btn" bindtap="decrFn">-</text>
+      <input class="operation-result" type="number" bindblur="goodsNumFn" value="{{moq==0 ? '1':moq}}" />
+      <text hover-class="hover" class="incr-btn" bindtap="incrFn">+</text>
+    </view>
+    <view class="bought">{{qty}}{{shoppingData.units}}起订购</view>
+  </view>
+  <!-- 服务商选择 -->
+  <view class="shopDetail-ms" bindtap="facilitatorFn">
+    <view class="eqwith">服务商</view>
+    <!-- <view class="company">{{company}}</view> -->
+    <!-- <view class="company">
+      <text class="companyname">{{company}}</text>
+    </view> -->
+    <view class="scroll-box">
+      <scroll-view scroll-x="true" class="scroll-x">
+        <text class="companyname">{{company}}</text>
+      </scroll-view>
+    </view>
+    <view class="jiantou"></view>
+  </view>
+  <!-- 适应区域 -->
+  <view class="shopDetail-ms">
+    <view class="ption">
+      <text class="eqwith">适应区域</text>
+      <view class="scroll-box">
+        <scroll-view scroll-x="true" class="scroll-x">
+          <text class="indition-txt">{{goodsData.adapRegion}}</text>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <!-- 送至 -->
+  <view class="shopDetail-ms">
+    <view class="eqwith">送至</view>
+    <view class="scroll-box">
+      <scroll-view scroll-x="true" class="scroll-x">
+        <text class="addt">{{addr}}</text>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 评价 -->
+  <view class="zm_star">
+    <view class="zm_star_top">
+      <view class="zm_star_top_title">商品评论</view>
+      <view class="zm_star_top_num">共{{rows}}条评论</view>
+    </view>
+    <view class="zm_star_bottom" wx:if="{{starList.length != 0}}">
+      <view class="star_list">
+        <view class="star_item" bindtap="toStar" wx:for="{{starList}}" wx:for-item="item" wx:for-index="index" wx:key="i">
+          <view class="star_top">
+            <view class="star_top_left">
+              <view class="star_tel">{{item.clientName}}</view>
+              <view class="star_star" wx:if="{{item.score == 1}}">
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+              </view>
+              <view class="star_star" wx:if="{{item.score == 2}}">
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+              </view>
+              <view class="star_star" wx:if="{{item.score == 3}}">
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+              </view>
+              <view class="star_star" wx:if="{{item.score == 4}}">
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+              </view>
+              <view class="star_star" wx:if="{{item.score == 5}}">
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+                <view class="star_icon">
+                  <image class="star_icon_img" src="../../images/star_active.png" mode="aspectFit"></image>
+                </view>
+              </view>
+            </view>
+            <view class="star_time">{{dateUtil.dateFormat(item.addTime, 'yyyy-MM-dd')}}</view>
+          </view>
+          <view class="star_container" wx:if="{{item.content == null || item.content == ''}}">
+            <text class="star_container_text">
+              此用户暂无填写评价
+            </text>
+          </view>
+          <view class="star_container" wx:else>
+            <text class="star_container_text">
+              {{item.content}}
+            </text>
+          </view>
+          <view class="star_update" wx:if="{{item.urls.length != 0}}">
+            <block wx:for="{{item.urls}}" wx:for-item="imgs" wx:for-index="index_img" wx:key="s">
+              <image class="star_update_img" src="{{showImgUrl + imgs.url}}" mode="aspectFit" wx:if="{{imgs.isAppend == 0}}" data-isappend="{{imgs.isAppend}}" data-id="{{imgs.id}}"></image>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <block wx:else> -->
+      <view class="zm_star_last" bindtap="toStar" wx:if="{{rowsList}}">
+        <view class="zm_star_last_botton">查看全部评论</view>
+      </view>
+      <view class="zm_star_last" wx:else>
+        <view class="zm_star_last_botton_no">暂无评价</view>
+      </view>
+    <!-- </block> -->
+  </view>
+  <!-- 产品参数详情 -->
+  <view class="canshu">
+    <view class="chaninfo">
+      <text class="{{selected1?'red':''}}" bindtap="introduceFn">产品介绍</text>
+      <!-- <text class="{{selected?'red':''}}" bindtap="swichNavFn">产品参数</text> -->
+    </view>
+    <import src="../../wxParse/wxParse.wxml" />
+    <view class="detail">
+      <view class="{{selected?'show':'hidden'}}">
+        <view class="shopinfo" wx:for="{{shopinfo}}" wx:key="i">
+          <text class="shopinfotxt">{{item.attrName}} : {{item.attrValue}}</text>
+        </view>
+        <!-- <view class="noParameter" hidden="{{noCpincs}}">暂无产品参数</view> -->
+      </view>
+      <view class="{{selected1?'show':'hidden'}} adf">
+        <template is="wxParse" data="{{wxParseData:parameterData.nodes}}" />
+        <view class="noParameter" hidden="{{noCpinjs}}">暂无产品介绍</view>
+      </view>
+    </view>
+  </view>
+  <view class="kongbai"></view>
+</view>
+<!-- 结算 -->
+<view class="balance" hidden='{{paymentBtn}}'>
+  <!-- 警告提示框 -->
+  <view class="errorMsg" hidden="{{isError}}">{{errorMsg}}</view>
+  <view class="shopping-car {{ishuise?'':'huise'}}" data-skuid="{{skuId}}" bindtap="addcarFn" hidden='{{field?true:false}}'>
+    加入购物车
+  </view>
+  <view class="purchase {{ishuise?'':'huise'}}" bindtap="boughtFn" style="{{field?'width:100%':''}}">
+    立即购买
+  </view>
+</view>

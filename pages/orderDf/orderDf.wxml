@@ -1,0 +1,34 @@
+<view>
+      <view class="nolist" hidden="{{isnone}}">您暂时还没有订单！</view>
+      <!--未支付-->
+    <view class="order-paid" hidden="{{westatus}}">
+      <view class="order-list" wx:for="{{listData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status">未支付</text>
+          <view class="order-price">共{{item.itemQty}}件 合计：
+            <text class="totail-price">¥{{item.retailPayAmount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.items}}" wx:key="i" wx:for-item="list" bindtap="orderDetailFn" data-orderId="{{item.id}}">
+
+          <!--<image src="{{imgPath}}{{item.img?item.img:item.defauliImg}}"></image>-->
+          <image src="{{imgPath+list.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{list.brand}}{{list.itemName}}</text>
+            <text class="order-pro">由{{item.saleName}}提供发货和售后</text>
+            <view class="peice-wrap">
+              <text class="weight">{{list.norm}}</text>
+              <text class="num">x{{list.qty}}</text>
+              <text class="price">¥{{list.price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="order-work">
+          <text class="conpousTip" hidden="{{isMoney}}">已使用¥{{item.couponDiscount}}优惠券</text>
+          <button class="order-cancle" bindtap="cancleFn" data-orderId="{{item.id}}">取消订单</button>
+          <button class="order-payment" bindtap="placeOrderFn" data-orderId="{{item.id}}">立即支付</button>
+        </view>
+      </view>
+    </view>
+ 
+</view>

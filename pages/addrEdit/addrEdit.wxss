@@ -1,0 +1,91 @@
+/* pages/addrEdit/addrEdit.wxss */
+
+.info-list {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #efeff4;
+  background-color: #fff;
+  font-size: 30rpx;
+  color: #353535;
+  overflow: hidden;
+  display: flex;
+}
+
+.postman {
+  margin-top: 30rpx;
+}
+
+.info-list text {
+  flex: 1;
+  line-height: 50rpx;
+}
+
+.info-list input {
+  flex: 3;
+}
+
+.seve-btn {
+  background-color: #390;
+  margin: 30rpx;
+  color: #fff;
+  font-size: 36rpx;
+}
+
+.remove-btn {
+  background-color: #ddd;
+  color: #666;
+}
+
+/*地址的选择*/
+
+.info-addr {
+  border-bottom: 1rpx solid #efeff4;
+  background-color: #fff;
+  font-size: 30rpx;
+  color: #353535;
+  overflow: hidden;
+  display: flex;
+}
+
+.info-addr text {
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  flex: 1;
+  line-height: 54rpx;
+}
+
+.info-addr picker {
+  flex: 3;
+}
+
+.info-addr .provinces {
+  padding: 30rpx 0rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+}
+
+.seve-btn {
+  background-color: #390;
+  margin: 30rpx;
+  color: #fff;
+  font-size: 36rpx;
+}
+
+.remove-btn {
+  background-color: #e4383b;
+}
+
+.provincetxt {
+  width: 170rpx;
+  height: 100%;
+  float: left;
+  line-height: 113rpx;
+  text-align: left;
+  margin-left: 30rpx;
+}
+
+.provinceschoice {
+  padding: 30rpx 0rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  color:#ddd;
+}

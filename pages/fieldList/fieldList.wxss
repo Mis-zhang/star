@@ -1,0 +1,74 @@
+/* pages/fieldList/fieldList.wxss */
+.item {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  display: flex;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.item-img {
+  width: 240rpx;
+  height: 180rpx;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.item-img image {
+  max-width: 240rpx;
+  max-height: 180rpx;
+}
+
+.item-info {
+  width: 450rpx;
+}
+.item-info view {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 46rpx;
+}
+.item-info .item-tit {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+}
+.item-info .item-tit::before {
+  background-color: #f60;
+  border: 1rpx solid #f60;
+  display: inline-block;
+  padding: 2rpx;
+  width: 42rpx;
+  height: 42rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background-clip: content-box; 
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+.business::before {content: "企";}
+.government::before {content: "政";}
+/* 加载更多 */
+.load-more {
+  /* background-color: #fff; */
+  text-align: center;
+  font-size: 36rpx;
+  color: #bbb;
+  margin-top: 20rpx;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.empty-icon {
+  font-size: 30rpx;
+  text-align: center;
+  color: #a9a9a9;
+  margin-top: 260rpx;
+}
+.empty-icon image {
+  width: 260rpx;
+  height: 260rpx;
+}

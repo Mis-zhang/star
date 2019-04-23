@@ -1,0 +1,34 @@
+<view class="publish">
+  <block wx:for="{{ ItemsData }}" wx:key="i" wx:for-item="item" wx:for-index="index">
+    <view class="publish_top">
+      <view class="publish_goods">
+        <view class="publish_title">{{item.brand}}</view>
+        <view class="publish_breed">{{item.itemName}}</view>
+        <view class="publish_norm">{{item.norm}}</view>
+      </view>
+      <view class="publish_content">
+        <view class="publish_write">
+          <view class="publish_write_text">
+            <textarea auto-height placeholder="说说您对产品的一些想法，分享给其他用户！" data-index="{{index}}" placeholder-class="texterea" value="{{item.textArea}}" bindblur="getValue" />
+          </view>
+          <view class="publish_write_creame">
+            <!-- <uploadImages bindmyevent="myEventListener" count='{{countPic}}' showUrl="{{showImgUrl}}" uploadUrl="{{uploadImgUrl}}" ItemsData="{{ItemsData}}" data-index="{{index}}" itemIndex="{{index}}"></uploadImages> -->
+            <view class="add">
+              <view class="add_icon" wx:for="{{item.flies}}" wx:key="aa" wx:for-item="item_img" wx:for-index="index_img">
+                <image class="add_icon_img" src="{{showImgUrl + item_img}}" data-id="{{index_img}}" mode="aspectFit" data-index="{{index_img}}" data-parent="{{index}}" bindtap="lookImg"></image>
+                <image class="add_icon_active" src="../../images/del.png" mode="aspectFit" data-index="{{index_img}}" data-parent="{{index}}" bindtap="delImage"></image>
+              </view>
+              <view class="add_icon photo" bindtap="uploadDetailImage" data-itemindexs="{{index}}">
+                <view class="photo_icon">
+                  <image class="photo_icon_img" src="../../images/creame.png" mode="aspectFit"></image>
+                </view>
+                <view class="photo_title">添加图片</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="submit" bindtap="getAssess">发表</view>

@@ -1,0 +1,29 @@
+<!--pages/fieldList/fieldList.wxml-->
+<view class="container">
+  <navigator class="item" url="/pages/fieldDetail/fieldDetail?itemId={{item.id}}" open-type="navigate" wx:for="{{itemsData}}" wx:key='data'>
+      <view class="item-img">
+        <image src="{{imgPath + item.img}}" mode="widthFix"></image>
+      </view>
+      <view class="item-info">
+        <!-- <view class="item-tit ellipsis business {{item.mark == 1 ? 'business':'government'}}">{{item.address + item.srname + item.piname}}{{item.year}}年示范田</view>  -->
+        <view class="item-tit ellipsis business {{item.mark == 1 ? 'business':'government'}}">{{item.srname + item.piname}}{{item.year}}年示范田</view> 
+        <view class="ellipsis" wx:if="{{item.companyName != ''}}">示范单位：{{item.companyName}}</view>
+        <view class='ellipsis' wx:else>示范单位：{{item.comname}}</view>       
+        <view class="ellipsis" wx:if="{{item.coname != ''}}">所属厂商：{{item.coname}}</view>
+        <view class="ellipsis" wx:else>所属厂商：{{item.comname}}</view>     
+        <view class="ellipsis">种植面积：{{item.mu}} 亩</view>
+      </view>
+    </navigator>
+
+    <view class="empty-icon" wx:if="{{itemsData.length == 0}}">
+      <image src="/images/empty.png"></image>
+      <view>该地区暂无此品种示范田</view>
+    </view>
+
+    <view class="load-more" wx:if="{{itemsData.length != 0}}">
+      <view class="loading" hidden="{{searchLoading}}">正在载入更多...</view>  
+      <view class="{{itemsData.length == 0 ? 'hide' : 'show'}}">
+        <view class="loading complete" hidden="{{searchLoadingComplete}}">已加载全部</view>
+      </view>
+    </view>
+  </view>

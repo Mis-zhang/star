@@ -1,0 +1,38 @@
+<view class='container'>
+   
+   <view class="nolist" hidden="{{isnone}}">您暂时还没有退款订单！</view>
+ <!--全部订单-->
+    <view class="order-unpaid" hidden="{{allstatus}}">
+      <view class="order-list" wx:for="{{allListData}}" wx:key="i">
+        <view class="order-head">
+          <text class="order-status paid-status">{{item.mkstatus}}</text>
+          <view class="order-price"> 合计：
+            <text class="totail-price">¥{{item.amount}}</text>
+          </view>
+        </view>
+        <view class="order-con" wx:for="{{item.item}}" data-orderId="{{item.orderId}}" data-statuscode="{{item.status}}" bindtap="orderDetailFn" wx:key="i" wx:for-item="unList">
+          <image src="{{imgPath+unList.img}}" mode="aspectFit"></image>
+          <view class="order-info">
+            <text class="order-tit ellipsis2">{{unList.brand}}{{unList.itemName}}</text>
+            <text class="order-pro ellipsis2">由 {{item.companyName}} 提供发货和售后</text>
+            <!-- <view class="peice-wrap"> -->
+              <!-- <text class="weight">{{unList.norm}}</text> -->
+              <!-- <text class="num">x{{unList.qty}}</text> -->
+              <!-- <text class="price">¥{{unList.price}}</text> -->
+            <!-- </view> -->
+          </view>
+        </view>
+         <view class="order-work">
+           <text class="conpousTip conpousTiped" wx:if="{{item.refundTime}}">退款时间：{{item.refundTime}}</text> 
+         
+       </view>  
+        <!-- <view class="order-work" hidden="{{!item.ispo}}"> -->
+          <!-- <text class="conpousTip">已使用¥{{item.couponDiscount}}优惠券</text> -->
+          <!-- <button class="order-cancle" bindtap="cancleFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">取消订单</button>
+          <button class="order-payment" bindtap="placeOrderFn" data-orderId="{{item.id}}" data-statuscode="{{item.status}}">立即支付</button> -->
+          
+        <!-- </view> -->
+      </view>
+    </view>
+ 
+</view>

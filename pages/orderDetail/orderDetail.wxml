@@ -1,0 +1,144 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="container">
+
+  <!--订单生成后电话-->
+  <view class="telephone" hidden="{{!isPay}}">
+    <view class="tel-logo" bindtap="phone"></view>
+    <view class="tel-content">
+      <text class="contact ellipsis">订单已生成，请您尽快与商家联系！
+        <text hidden="{{isContact}}"></text>
+      </text>
+      <text class="traderName">{{contactname}}</text>
+      <text class="traderMob">{{companyData.serviceTel || orderDetailData.tel}}</text>
+    </view>
+  </view>
+
+  <!--具体地址-->
+  <!-- <view class="specific-addr">
+    <view class="add-logo"></view>
+    <view class="receiver-content">
+      <view class="contactName">{{orderDetailData.consignee}}</view>
+      <view class="contactMob">{{orderDetailData.mob}}</view>
+      <view class="contactAddr ellipsis">{{orderDetailData.regionName}}{{orderDetailData.address}}</view>
+    </view>
+  </view>
+  <view class="shop-detail" wx:for="{{itemsData}}" hidden="{{item.isShop}}" wx:key="i" data-itemId="{{item.itemId}}" data-skuId="{{item.skuId}}">  </view> -->
+
+  <view class="specific-addr">
+    <view class="add-logo"></view>
+    <view class="receiver-content">
+      <text class="contactName">{{orderDetailData.consignee}}</text>
+      <text class="contactMob">{{orderDetailData.mob}}</text>
+      <text class="contactAddr">{{orderDetailData.regionName}}{{orderDetailData.address}}</text>
+    </view>
+  </view>
+  <view class="shop-detail" wx:for="{{itemsData}}" hidden="{{item.isShop}}" wx:key="i" data-itemId="{{item.itemId}}" data-skuId="{{item.skuId}}">
+
+    <!--<image src="{{imgPath}}{{item.img?item.img:item.defauliImg}}" />-->
+    <image src="{{imgPath+item.img}}"></image>
+    <view class="info-wrap">
+      <text class="tit ellipsis2">{{item.brand}}  {{item.itemName}}</text>
+      <text class="company-name ellipsis2">由 {{companyData.name}} 提供发货和售后服务</text>
+      <view class="price-info">
+        <text>{{item.norm}}</text>
+        <text class="shopqty">x{{item.qty}}</text>
+        <text class="price">¥ {{item.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--商品的总额和运费-->
+  <view class="coast">
+    <view class="total-fee">
+      <text class="shop-coast">商品金额</text>
+      <text class="shop-fee">¥{{shopprice}}</text>
+    </view>
+    <view class="freight">
+      <text class="freight-txt">运费</text>
+      <text class="freight-fee">+¥{{freightfee}}</text>
+    </view>
+    <view class="full-cut" wx:if="{{foldingfee !=0}}">
+      <text class="cut-txt">折扣</text>
+      <text class="cut-fee">-¥{{foldingfee}}</text>
+    </view>
+    <view class="full-yhm" hidden="{{salemanCode == '' || salemanCode == nul || salemanCode == undefined}}">
+      <text class="yhm-text">已使用优惠码</text>
+      <text class="yhm-fee">{{salemanCode}}</text> 
+    </view>
+    <view class="full-folding">
+      <text class="folding-txt">优惠劵抵现金额</text>
+      <text class="folding-fee">-¥{{cutfee}}</text>
+    </view>
+    <!-- <view class="integral">
+      <text class="integral-txt">积分</text>
+      <text class="integral-fee">{{integral}}</text>
+    </view>  -->
+  </view>
+
+  <!--满赠-->
+  <!-- <view class="full-gifts" hidden="{{isGift}}">
+    <text class="zeng">赠</text>
+    <view class="giftdetail">
+      <view class="giftData" wx:for="{{giftData}}" wx:key="i">
+        <text class="giftname">{{item.brand}}{{item.itemName}} {{item.norm}}({{item.units}})</text>
+        <text class="giftnumber">x {{item.qty}}</text>
+      </view>
+    </view>
+  </view> -->
+
+  <!--商品的总额+运费-->
+  <view class="total">
+    <text class="total-txt">合计</text>
+    <text class="total-fee">¥{{totalfee}}</text>
+  </view>
+
+  <!--支付方式-->
+  <view class="pay-way">
+    <text class="pay-txt">支付方式</text>
+    <text class="pay-wx" hidden="{{!isonline}}">微信支付</text>
+    <text class="pay-wx" hidden="{{isonline}}">线下支付</text>
+  </view>
+
+  <!--订单编号-->
+  <view class="order-card">
+    <text class="card-txt">订单编号</text>
+    <text class="card-id">{{orderId}}</text>
+  </view>
+
+  <!--订单时间-->
+  <view class="order-time">
+    <text class="time-txt">下单时间</text>
+    <text class="time-id">{{timeStamp}}</text>
+  </view>
+
+  <!--选择按钮-->
+  <button class="pay-btn" hidden="{{isQs}}" data-orderId="{{orderDetailData.id}}" bindtap="qianshouFn">立即签收</button>
+  <button class="pay-btn" hidden="{{ispaid}}" data-orderId="{{orderDetailData.id}}" bindtap="placeOrderFn">立即支付</button>
+  <button class="refer-btn" hidden="{{ispaids}}" data-orderId="{{orderDetailData.id}}" bindtap="cancleFn">取消订单</button>
+  <button class="pay-btn" hidden="{{isTui}}" data-orderId="{{orderDetailData.id}}" bindtap="placeRefund">立即退款</button>
+</view>
+
+ <view class='zhezhao' hidden='{{tankuang}}'></view>
+<view class='tuibox' wx:if="{{chooseSize}}">
+  <radio-group class="tuikuan" bindchange="checkboxChange" wx:if="{{chooseSize}}" animation='{{animationData}}'>
+    <label class="checkbox">
+      <radio value="1" checked="{{checked}}" />缺货
+    </label>
+    <label class="checkbox">
+      <radio value="2" checked="{{checked}}" />未按约定时间发货
+    </label>
+    <label class="checkbox">
+      <radio value="3" checked="{{checked}}" />协商一致退款
+    </label>
+    <label class="checkbox">
+      <radio value="4" checked="{{checked}}" />拍错/多拍/不想要
+    </label>
+    <label class="checkbox">
+      <radio value="5" checked="{{checked}}" />其他
+    </label>
+    <view class="checkbtn">
+      <button class='tuiButton left' bindtap="quxiaoFn">取消</button>
+      <button class='tuiButton right' bindtap='quedingFn'>确定</button>
+    </view>
+  </radio-group>
+</view>
